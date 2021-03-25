@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const config = require('../config/heroku.config')
+const config = require('../config/db.config')
 
 const sequelize = new Sequelize(
   config.DB,
@@ -32,4 +32,10 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 db.user = require('../models/user.model')(sequelize, Sequelize)
+db.admin = require('../models/admin.model')(sequelize, Sequelize)
+db.notes = require('../models/notes.model')(sequelize, Sequelize)
+
+db.user.hasMany(db.notes, { foreignKey: 'user_id' })
+db.user.hasOne(db.admin, { foreignKey: 'user_id' })
+
 module.exports = db
