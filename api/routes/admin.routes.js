@@ -11,8 +11,8 @@ module.exports = (app) => {
   // Get the lists of admin
   router.get('/:note_id', needs.findlistsofAdmins)
 
-//   // Update Notes
-//   router.put('/:note_id', needs.updateNotes)
+  // Update Notes
+  // router.put('/:note_id', needs.updateNotes)
 
-  app.use('/apis/notes', router)
+  app.use('/apis/admin', router)
 }
