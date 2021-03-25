@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define('user', {
-    user_id: {
+  const Admin = sequelize.define('admin', {
+    admin_id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       allowNull: false,
@@ -23,13 +23,6 @@ module.exports = (sequelize, Sequelize) => {
       // allowNull: false,
       // notEmpty: true
     },
-    password: {
-      type: Sequelize.STRING
-      // allowNull,
-    },
-    provider: {
-      type: Sequelize.STRING
-    },
     email: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -37,5 +30,5 @@ module.exports = (sequelize, Sequelize) => {
       // notEmpty: true
     }
   })
-  return User
+  return Admin
 }
