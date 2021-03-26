@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
       // unique: true
       // notEmpty: true
     },
-    notes_content: {
+    notes_contents: {
       type: Sequelize.STRING
       // allowNull: false,
       // notEmpty: true
