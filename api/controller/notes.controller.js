@@ -23,7 +23,7 @@ exports.createNotes = (req, res) => {
     })
 }
 
-// Retreve all User from the database
+// Retreve all Notes belonging to User from the database
 exports.findAllNotes = (req, res) => {
   const user_id = req.params.user_id
   Notes.findAll(
@@ -42,39 +42,23 @@ exports.findAllNotes = (req, res) => {
     })
 }
 
+// Retrieve single user from database
 exports.findSingleNotes = (req, res) => {
-  const userid = req.params.user_id
+  const notes_id = req.params.notes_id
 
   Notes.find({
     where: {
-      user_id: userid
+      notes_id
     }
   }).then((data) => {
     console.log(data)
     res.send({
-      text_title: data.text_title,
-      text_body: data.text_body,
-      text_id: data.text_id
+      data
     })
   })
     .catch((err) => {
       res.status(500).send({
         message: err.message + 'Error retrieivng Notes with id=' + userid
-      })
-    })
-}
-
-// Find a single Webpage with id
-exports.findNotes = (req, res) => {
-  const id = req.params.id
-
-  Notes.findByPk(id)
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message + 'Error retrieivng Notes with id=' + id
       })
     })
 }
