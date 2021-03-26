@@ -5,7 +5,7 @@ module.exports = (app) => {
   // Create a new Notes for Users
   router.post('/', needs.createNotes)
 
-  // Retrieve the notes of all Users
+  // Retrieve the all notes of one User
   router.get('/:user_id', needs.findAllNotes)
 
   // Retrieve one note for one user
