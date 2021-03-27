@@ -27,6 +27,7 @@
         </div>
         <input
           id="add-input"
+          v-model="input_field"
           class="name-text hide"
           placeholder="Add notes title"
           @keyup.enter="createNotes"
@@ -108,6 +109,7 @@ export default {
           notes_content: 'This is a content'
         }
       ],
+      input_field: '',
       tempData: []
     }
   },
@@ -138,8 +140,8 @@ export default {
     createNotes () {
       this.tempData = {
         notes_id: 2,
-        notes_title: 'CategoriesData',
-        notes_content: 'This is a content'
+        notes_title: this.input_field,
+        notes_content: this.input_field
       }
       // this.$set(this.categoriesCard, iterate, this.tempData)
       this.notes_group.push(this.tempData)
