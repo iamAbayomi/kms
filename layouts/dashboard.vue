@@ -29,11 +29,12 @@
           id="add-input"
           class="name-text hide"
           placeholder="Add notes title"
+          @keyup.enter="createNotes"
         >
         <!-- End of link -->
         <!-- Button to add new Notes -->
         <div
-          @click="addNotes"
+          @click="addNewNotes"
         >
           <img class="button-logo" src="~/assets/vectors/blue_plus.svg">
         </div>
@@ -127,17 +128,20 @@ export default {
       // this.routePath = document.title
       // console.log(document.title)
     },
-    addNotes () {
-      console.log('Hello I am here')
+    addNewNotes () {
       const element = document.getElementById('add-input')
       element.classList.remove('hide')
     },
     logOut () {
       this.$auth.logout()
     },
+    createNotes () {
+      console.log('it worked')
+      this.removeInput()
+    },
     removeInput () {
-      const element = document.getElementById('myDIV')
-      element.classList.remove('mystyle')
+      const element = document.getElementById('add-input')
+      element.classList.add('hide')
     }
   }
 }
