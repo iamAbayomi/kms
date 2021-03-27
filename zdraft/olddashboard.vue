@@ -5,34 +5,22 @@
       v-model="drawer"
       app
     >
-      <!-- Header Logo -->
       <nuxt-link to="/">
         <img class="header-logo" src="~/assets/images/spiinge-web-logo.svg">
       </nuxt-link>
-      <!-- Begining of menu -->
       <div class="menu">
-        <!-- group of link -->
-        <div class="link-group">
-          <nuxt-link
-            v-for="item in notesGroup"
-            :key="item.notesId"
-            class="menu-item"
-            to="/product"
-            exact-active-class="menu-active"
-          >
-            <p class="menu-text">
-              {{ noteTitle }}
-            </p>
-          </nuxt-link>
-        </div>
-        <!-- End of link -->
+        <nuxt-link class="menu-item" to="/product" exact-active-class="menu-active">
+          <p class="menu-text">
+            Product
+          </p>
+        </nuxt-link>
         <!-- Button to add new Notes -->
         <div
           @click="addNotes"
         >
           <img class="button-logo" src="~/assets/vectors/blue_plus.svg">
         </div>
-        <!-- End of menu -->
+        <!-- Button to add new Notes -->
       </div>
     </v-navigation-drawer>
     <!-- App Bar -->
