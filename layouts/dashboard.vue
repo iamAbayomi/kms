@@ -14,6 +14,9 @@
             Product
           </p>
         </nuxt-link>
+        <div>
+          <img class="button-logo" src="~/assets/vectors/blue_plus.svg">
+        </div>
       </div>
     </v-navigation-drawer>
     <!-- App Bar -->
@@ -245,6 +248,10 @@ body{
 
 .icon{
   display: none;
+}
+
+.button-logo{
+    height: 40px;
 }
 
 .main-board{
