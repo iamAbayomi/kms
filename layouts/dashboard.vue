@@ -23,18 +23,6 @@
             Marketing
           </p>
         </nuxt-link>
-        <!-- <nuxt-link class="menu-item" to="/testing-process" exact-active-class="menu-active">
-          <p class="menu-text">
-            Testing Process
-          </p>
-        </nuxt-link> -->
-        <nuxt-link class="menu-item" to="/feature" exact-active-class="menu-active">
-          <p class="menu-text">
-            Feature
-          </p>
-        </nuxt-link>
-
-        <!--  -->
       </div>
     </v-navigation-drawer>
     <v-app-bar
