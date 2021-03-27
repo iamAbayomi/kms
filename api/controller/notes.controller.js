@@ -42,7 +42,7 @@ exports.findAllNotes = (req, res) => {
     })
 }
 
-// Retrieve single user from database
+// Retrieve single notes from database
 exports.findSingleNotes = (req, res) => {
   const notes_id = req.params.notes_id
 
