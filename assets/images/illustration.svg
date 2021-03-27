@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="802" height="511" viewBox="0 0 802 511">
+  <g id="diagram" transform="translate(-1035 -373)">
+    <text id="Have_all_your_product_information_in_one_place" data-name="Have all your product information in one place" transform="translate(1273 877)" fill="#103c7e" font-size="18" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="0" y="0">Have all your product information in one place</tspan></text>
+    <g id="Card" transform="translate(1729 651.126)">
+      <rect id="Rectangle_1135" data-name="Rectangle 1135" width="278" height="60" rx="3" transform="translate(-213 -218.126)" fill="#e6effc"/>
+      <text id="Pricing" transform="translate(-74 -179.126)" fill="#103c7e" font-size="26" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-39.377" y="0">Pricing</tspan></text>
+    </g>
+    <g id="Card-2" data-name="Card" transform="translate(1248 827.126)">
+      <rect id="Rectangle_1135-2" data-name="Rectangle 1135" width="278" height="60" rx="3" transform="translate(-213 -218.126)" fill="#e6effc"/>
+      <text id="Customer_Needs" data-name="Customer Needs" transform="translate(-74 -179.126)" fill="#103c7e" font-size="26" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-91.403" y="0">Customer Needs</tspan></text>
+    </g>
+    <g id="Card-3" data-name="Card" transform="translate(1430 957.126)">
+      <rect id="Rectangle_1135-3" data-name="Rectangle 1135" width="278" height="60" rx="3" transform="translate(-213 -218.126)" fill="#e6effc"/>
+      <text id="Customer_Needs-2" data-name="Customer Needs" transform="translate(-74 -179.126)" fill="#103c7e" font-size="26" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-91.403" y="0">Customer Needs</tspan></text>
+    </g>
+    <g id="Card-4" data-name="Card" transform="translate(1778 882.126)">
+      <rect id="Rectangle_1142" data-name="Rectangle 1142" width="278" height="60" rx="3" transform="translate(-219 -123.126)" fill="#e6effc"/>
+      <text id="Feature_Set" data-name="Feature Set" transform="translate(-80 -84.126)" fill="#103c7e" font-size="26" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-63.609" y="0">Feature Set</tspan></text>
+    </g>
+    <g id="Card-5" data-name="Card" transform="translate(1642 720.126)">
+      <rect id="Rectangle_1140" data-name="Rectangle 1140" width="278" height="60" rx="3" transform="translate(-206 -111.126)" fill="#e6effc"/>
+      <text id="Marketing" transform="translate(-67 -73)" fill="#103c7e" font-size="26" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-56.472" y="0">Marketing</tspan></text>
+    </g>
+    <g id="Card-6" data-name="Card" transform="translate(1428 575.126)">
+      <rect id="Rectangle_1141" data-name="Rectangle 1141" width="278" height="60" rx="3" transform="translate(-211 -96.126)" fill="#e6effc"/>
+      <text id="Target_Customer" data-name="Target Customer" transform="translate(-72 -57.126)" fill="#103c7e" font-size="26" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-92.157" y="0">Target Customer</tspan></text>
+    </g>
+    <g id="Card-7" data-name="Card" transform="translate(1142 390.126)">
+      <rect id="Rectangle_1139" data-name="Rectangle 1139" width="278" height="60" rx="3" transform="translate(-41 -17.126)" fill="#e6effc"/>
+      <text id="Product" transform="translate(98 21.874)" fill="#103c7e" font-size="26" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-44.668" y="0">Product</tspan></text>
+    </g>
+  </g>
+</svg>
