@@ -108,7 +108,7 @@ export default {
           notes_content: 'This is a content'
         }
       ],
-      tempGroup: []
+      tempData: []
     }
   },
   watch: {
@@ -136,7 +136,13 @@ export default {
       this.$auth.logout()
     },
     createNotes () {
-      console.log('it worked')
+      this.tempData = {
+        notes_id: 2,
+        notes_title: 'CategoriesData',
+        notes_content: 'This is a content'
+      }
+      // this.$set(this.categoriesCard, iterate, this.tempData)
+      this.notes_group.push(this.tempData)
       this.removeInput()
     },
     removeInput () {
