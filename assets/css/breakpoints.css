@@ -1,0 +1,27 @@
+/* Small Breakpoint */
+@media screen and (min-width: 544px){
+    /* Main Contianer */
+    .main-container{
+        max-width: 600px;
+        margin: 25vh auto 30px auto;
+      }   
+      /* Heading text */
+      .heading-text{
+        margin: 0px 15px 0px 15px;
+      }
+}
+/* Medium Breakpoint */
+@media screen and (min-width: 768px){
+    .main-container{
+        max-width: 800px;
+        margin: 25vh auto 30px auto;
+      }   
+}
+/* Large Breakpoint */
+@media screen and (min-width: 1012px){
+    
+}
+/* Extra-Large Breakpoint */
+@media screen and (min-width: 1280px){
+    
+}
