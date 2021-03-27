@@ -15,6 +15,7 @@
     "@nuxtjs/axios": "^5.13.1",
     "core-js": "^3.9.1",
     "express": "^4.17.1",
+    "jquery": "^3.6.0",
     "nuxt": "^2.15.3",
     "sequelize": "^6.6.2"
   },
@@ -23,6 +24,7 @@
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/stylelint-module": "^4.0.0",
     "@nuxtjs/vuetify": "^1.11.3",
+    "@types/jquery": "^3.5.5",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
     "eslint-plugin-nuxt": "^2.0.0",

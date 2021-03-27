@@ -14,17 +14,22 @@
         <!-- group of link -->
         <div class="link-group">
           <nuxt-link
-            v-for="item in notesGroup"
-            :key="item.notesId"
+            v-for="item in notes_group"
+            :key="item.notes_id"
             class="menu-item"
             to="/product"
             exact-active-class="menu-active"
           >
             <p class="menu-text">
-              {{ noteTitle }}
+              {{ item.notes_title }}
             </p>
           </nuxt-link>
         </div>
+        <input
+          id="add-input"
+          class="name-text hide"
+          placeholder="Add notes title"
+        >
         <!-- End of link -->
         <!-- Button to add new Notes -->
         <div
@@ -94,7 +99,15 @@ export default {
   data () {
     return {
       drawer: null,
-      routePath: ''
+      routePath: '',
+      notes_group: [
+        {
+          notes_id: 1,
+          notes_title: 'Hello',
+          notes_content: 'This is a content'
+        }
+      ],
+      tempGroup: []
     }
   },
   watch: {
@@ -115,10 +128,16 @@ export default {
       // console.log(document.title)
     },
     addNotes () {
-
+      console.log('Hello I am here')
+      const element = document.getElementById('add-input')
+      element.classList.remove('hide')
     },
     logOut () {
       this.$auth.logout()
+    },
+    removeInput () {
+      const element = document.getElementById('myDIV')
+      element.classList.remove('mystyle')
     }
   }
 }
@@ -204,6 +223,17 @@ body{
 .v-btn > .v-btn__content .v-icon {
     color: #032E6E;
 
+}
+
+.name-text{
+    width: 100%;
+    height: 44px;
+    display: block;
+    background-color: #F4F8FC;
+    padding-left: 10px;
+    margin-top: 8px;
+    margin-bottom: 22px ;
+    /* background-color: #F4F8FC; */
 }
 
 .theme--light.v-sheet {
@@ -325,6 +355,10 @@ body{
     color: grey;
     max-width: 450px;
     margin-top: -20px;
+}
+
+.hide{
+    display: none;
 }
 
 </style>
