@@ -1,5 +1,6 @@
 <template>
   <v-app id="inspire">
+    <!-- Side Navigation Bar -->
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -13,18 +14,9 @@
             Product
           </p>
         </nuxt-link>
-        <nuxt-link class="menu-item" to="/target-customer" exact-active-class="menu-active">
-          <p class="menu-text">
-            Target Customer
-          </p>
-        </nuxt-link>
-        <nuxt-link class="menu-item" to="/marketing" exact-active-class="menu-active">
-          <p class="menu-text">
-            Marketing
-          </p>
-        </nuxt-link>
       </div>
     </v-navigation-drawer>
+    <!-- App Bar -->
     <v-app-bar
       class="header-bar"
       dense
