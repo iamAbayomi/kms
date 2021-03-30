@@ -48,6 +48,12 @@ export default {
     { path: '/', handler: '~/api/index.js' }
   // '~/api/index.js'
   ],
+  server: {
+    port: 4000, // default: 3000
+    host: '0.0.0.0', // default: localhost,
+    timing: false
+
+  },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
