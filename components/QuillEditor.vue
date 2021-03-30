@@ -2,10 +2,8 @@
   <div id="contain" class="container">
     <!-- Create the editor container -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
     <div
       id="editor"
-      class="editor"
     />
   </div>
 </template>
@@ -18,18 +16,39 @@ if (process.client) {
 
 export default {
   data () {
+    return {
 
+    }
   },
   mounted () {
-    this.createQuillEditor()
+    // this.createQuillEditor()
+
+    const container = document.getElementById('editor')
+    // const toolbarOptions = this.toolBarOptions()
+    const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
+
+    const options = {
+      debug: 'false',
+      placeholder: 'hello',
+      readOnly: false,
+      modules: {
+        toolbar: toolbarOptions
+      },
+      // bounds: '#contain',
+      theme: 'snow'
+    }
+    // eslint-disable-next-line no-unused-vars
+    const quill = new Quill(container, options)
   },
   nethods: {
     createQuillEditor () {
       const container = document.getElementById('editor')
-      const toolbarOptions = this.toolBarOptions()
+      // const toolbarOptions = this.toolBarOptions()
+      const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
+
       const options = {
         debug: 'false',
-        placeholder: this.placeholderBody,
+        placeholder: 'hello',
         readOnly: false,
         modules: {
           toolbar: toolbarOptions
@@ -39,8 +58,8 @@ export default {
       }
       // eslint-disable-next-line no-unused-vars
       const quill = new Quill(container, options)
-      this.getText(quill)
-      this.onQuillTextChange(this, quill)
+    //   this.getText(quill)
+    //   this.onQuillTextChange(this, quill)
     }
   }
 }
