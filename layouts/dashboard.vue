@@ -17,7 +17,7 @@
             v-for="item in notes_group"
             :key="item.notes_id"
             class="menu-item"
-            to="/product"
+            :to="item.notes_title.toLowerCase()"
             exact-active-class="menu-active"
           >
             <p class="menu-text">
