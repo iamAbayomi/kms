@@ -20,9 +20,20 @@
             :to="item.notes_title.toLowerCase()"
             exact-active-class="menu-active"
           >
-            <p class="menu-text">
+            <p
+              id="menu_item_title"
+              class="menu-text"
+              @click="removeMenuItem"
+            >
               {{ item.notes_title }}
             </p>
+            <input
+              id="edit-input"
+              v-model="edit_field"
+              class="name-text hide"
+              placeholder="Edit notes title"
+              @keyup.enter="editNotes"
+            >
           </nuxt-link>
         </div>
         <input
@@ -35,7 +46,7 @@
         <!-- End of link -->
         <!-- Button to add new Notes -->
         <div
-          @click="addNewNotes"
+          @click="showInputField"
         >
           <img class="button-logo" src="~/assets/vectors/blue_plus.svg">
         </div>
@@ -110,6 +121,7 @@ export default {
         }
       ],
       input_field: '',
+      edit_field: '',
       tempData: []
     }
   },
@@ -130,10 +142,6 @@ export default {
       // this.routePath = document.title
       // console.log(document.title)
     },
-    addNewNotes () {
-      const element = document.getElementById('add-input')
-      element.classList.remove('hide')
-    },
     logOut () {
       this.$auth.logout()
     },
@@ -145,9 +153,37 @@ export default {
       }
       // this.$set(this.categoriesCard, iterate, this.tempData)
       this.notes_group.push(this.tempData)
-      this.removeInput()
+      this.removeInputField()
     },
-    removeInput () {
+    showMenuItem () {
+      const element = document.getElementById('menu_item_title')
+      element.classList.remove('hide')
+    },
+    removeMenuItem () {
+      this.showEditField()
+      const element = document.getElementById('menu_item_title')
+      element.classList.add('hide')
+    },
+    showEditField () {
+      const element = document.getElementById('edit-input')
+      element.classList.remove('hide')
+      this.showMenuItem()
+    },
+    removeEditField () {
+      const element = document.getElementById('edit-input')
+      element.classList.add('hide')
+      this.showMenuItem()
+    },
+    editNotes () {
+      console.log(this.notes_group[0].notes_title)
+      this.notes_group[0].notes_title = this.edit_field
+      this.removeEditField()
+    },
+    showInputField () {
+      const element = document.getElementById('add-input')
+      element.classList.remove('hide')
+    },
+    removeInputField () {
       const element = document.getElementById('add-input')
       element.classList.add('hide')
     }
