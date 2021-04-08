@@ -107,7 +107,7 @@ export default {
     redirect: {
       login: '/login',
       logout: '/',
-      home: '/onboarding/product'
+      home: '/hello'
     },
     plugins: [
       '~plugins/auth.js'
