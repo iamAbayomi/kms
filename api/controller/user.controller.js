@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable import/order */
 /* eslint-disable eqeqeq */
@@ -8,15 +9,16 @@ const { body, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const auth = require('../auth/index')
+const serverResponse = require('../utilities/response')
 
 // method for creating tokens
 // Create and Save a new User
 exports.createUser = [([
-  body('username').isLength({ min: 1 }),
-  body('username').custom((value) => {
+  body('fullname').isLength({ min: 1 }),
+  body('fullname').custom((value) => {
     return User.findAll({
       where: {
-        username: value
+        fullname: value
       }
     }).then((data) => {
       console.log('The data from the db ' + data)
@@ -52,7 +54,7 @@ exports.createUser = [([
   }
   // Create a User
   const user = {
-    username: req.body.username,
+    fullname: req.body.fullname,
     firstname: req.body.firstname,
     surname: req.body.surname,
     password: req.body.password,
@@ -76,14 +78,70 @@ exports.createUser = [([
       })
     })
     .catch((err) => {
-      res.status(500).send({
-        message:
-              err.message || 'Some error occurred while creating new user'
-      }
-      )
+      serverResponse.sendError(res, err, 'user')
     })
 }
 ]
+
+exports.createUserWithGoogle = (req, res) => {
+  const mutatedfullname = req.body.given_name + ' ' + req.body.family_name
+  const user = {
+    // user_id: req.body.sub,
+    fullname: mutatedfullname,
+    firstname: req.body.given_name,
+    surname: req.body.family_name,
+    password: req.body.password,
+    provider: req.body.provider,
+    email: req.body.email
+  }
+  User.findOne({
+    where: {
+      email: req.body.email
+    }
+  }).then((data) => {
+    if (data === 0) {
+      console.log(data)
+      // Save the user in the database
+      User.create(user)
+        .then((data) => {
+          // console.log(data.user_id)
+          // const token = jwt.sign({ id: data.user_id, fullname: data.fullname, email: data.email }, auth.config.authSecret)
+          const token = auth.signToken(data, 'author', auth.config.authSecret)
+          res.send({
+            data,
+            token: token
+          })
+        })
+        .catch((err) => {
+          serverResponse.sendError(res, err, 'Error Creating User')
+        })
+    } else {
+      console.log(data)
+      // const token = jwt.sign({ id: data.user_id, fullname: data.fullname, email: data.email }, auth.config.authSecret)
+      const token = auth.signToken(data, 'author', auth.config.authSecret)
+      console.log('token' + token)
+      res.send({
+        data,
+        token: token
+      })
+    }
+  }).catch((err) => {
+    console.log('error is in finding user' + '\n' + err)
+    User.create(user)
+      .then((data) => {
+        // console.log(data.user_id)
+        // const token = jwt.sign({ id: data.user_id, fullname: data.fullname, email: data.email }, auth.config.authSecret)
+        const token = auth.signToken(data, 'author', auth.config.authSecret)
+        res.send({
+          data,
+          token: token
+        })
+      })
+      .catch((err) => {
+        serverResponse.sendError(res, err, 'Error Creating User')
+      })
+  })
+}
 
 // Login Module
 exports.login = [(
@@ -112,7 +170,8 @@ exports.login = [(
         console.log(response)
         // Compare password and send token
         if (response == true) {
-          const token = jwt.sign({ id: data.user_id, username: data.username, email: data.email }, auth.config.authSecret)
+          // const token = jwt.sign({ id: data.user_id, fullname: data.fullname, email: data.email }, auth.config.authSecret)
+          const token = auth.signToken(data, 'author', auth.config.authSecret)
           res.send({
             data,
             token
@@ -137,21 +196,6 @@ exports.login = [(
   })
 }]
 
-// Find a single User with id
-exports.findUser = (req, res) => {
-  const id = req.params.id
-
-  User.findByPk(id)
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message + 'Error retrieving User with id=' + id
-      })
-    })
-}
-
 exports.getAuthenticatedUser = (req, res) => {
   const token = req.headers.authorization
   if (token) {
@@ -170,15 +214,34 @@ exports.getAuthenticatedUser = (req, res) => {
   }
 }
 
-// Find all webpages belonging to a specific user
-exports.findUserWebpages = (req, res) => {
-  const userId = req.params.userId
-  User.findByPk(userId, { include: ['webpages'] })
+// Find all Users Projects
+exports.findUserProjects = (req, res) => {
+  const userId = req.params.id
+  User.findByPk(userId, { include: ['project'] })
     .then((data) => {
       res.send(data)
     }).catch((err) => {
       res.status(500).send({
-        message: 'Error retrieving user webpages titile ' + err
+        message: 'Error retrieving user projects ' + err
+      })
+    })
+}
+
+exports.sendAccessToken = (req, res) => {
+
+}
+
+// Find a single User with id
+exports.findUser = (req, res) => {
+  const id = req.params.id
+
+  User.findByPk(id)
+    .then((data) => {
+      res.send(data)
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message + 'Error retrieving User with id=' + id
       })
     })
 }
