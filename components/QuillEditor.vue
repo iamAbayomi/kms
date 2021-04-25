@@ -18,7 +18,10 @@ if (process.client) {
 export default {
   data () {
     return {
-      notesTitle: ''
+      notes_title: '',
+      notes_contents: '',
+      notes_delta: '',
+      saved_status: false
     }
   },
   mounted () {
@@ -88,7 +91,7 @@ export default {
         // console.log('sent')
       }, 1000, { maxWait: 3000 }),
     sendText () {
-      if (this.savedStatus) {
+      if (this.saved_status) {
         this.updateText()
       } else {
         this.createText()
