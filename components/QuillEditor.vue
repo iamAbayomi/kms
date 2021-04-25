@@ -18,7 +18,7 @@ if (process.client) {
 export default {
   data () {
     return {
-
+      notesTitle: ''
     }
   },
   mounted () {
@@ -60,10 +60,11 @@ export default {
       })
     },
     createText () {
-      this.$axios.post('/apis/' + this.pageName, {
-        text_title: this.quillText,
-        text_body: this.quillContents,
-        user_id: this.$auth.user.id
+      this.$axios.post('/apis/notes/', {
+        notes_title: this.notes_title,
+        notes_contents: this.notes_contents,
+        notes_delta: this.notes_delta,
+        user_id: 1
       })
         .then((response) => {
           console.log(response)
