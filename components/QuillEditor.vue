@@ -10,6 +10,7 @@
 
 <script>
 /* eslint-disable no-console */
+import _ from 'lodash'
 let Quill = ''
 if (process.client) {
   Quill = require('quill')
@@ -54,21 +55,44 @@ export default {
           thiss.quillText = quill.getText()
           console.log(thiss.quillContents)
           // eslint-disable-next-line no-unused-expressions
-          // thiss.saveText()
+          thiss.saveText()
         }
       })
+    },
+    createText () {
+      this.$axios.post('/apis/' + this.pageName, {
+        text_title: this.quillText,
+        text_body: this.quillContents,
+        user_id: this.$auth.user.id
+      })
+        .then((response) => {
+          console.log(response)
+          this.savedStatus = response.status
+          this.textId = response.data.text_id
+
+          console.log(this.textId)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    saveText:
+      _.debounce(function () {
+        console.log('inside the debounce')
+        // if (this.$auth.user.roles === 'guest') {
+        //   this.showLogin()
+        //   return
+        // }
+        this.sendText()
+        // console.log('sent')
+      }, 1000, { maxWait: 3000 }),
+    sendText () {
+      if (this.savedStatus) {
+        this.updateText()
+      } else {
+        this.createText()
+      }
     }
-    //,
-    // saveText:
-    //   _.debounce(function () {
-    //     console.log('inside the debounce')
-    //     if (this.$auth.user.roles === 'guest') {
-    //       this.showLogin()
-    //       return
-    //     }
-    //     this.sendText()
-    //     // console.log('sent')
-    //   }, 1000, { maxWait: 3000 })
   }
 }
 </script>
