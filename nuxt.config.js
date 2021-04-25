@@ -48,12 +48,6 @@ export default {
     { path: '/', handler: '~/api/index.js' }
   // '~/api/index.js'
   ],
-  server: {
-    port: 3000, // default: 3000
-    host: '0.0.0.0', // default: localhost,
-    timing: false
-
-  },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -69,51 +63,50 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/vuetify',
-    '@nuxtjs/auth-next'
-
+    '@nuxtjs/vuetify'
+    // '@nuxtjs/auth-next'
   ],
   /*
   ** Auth Nuxt module configuration
   ** See https://auth.nuxtjs.org/api/options.html
   */
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url: '/apis/user/login',
-            method: 'post',
-            propertyName: 'token'
-          },
-          logout: true,
-          // {
-          //   url: '/auth/logout',
-          //   method: 'post'
-          // },
-          user: {
-            url: '/apis/user/data/userdata',
-            method: 'get',
-            propertyName: 'user'
-          }
-        },
-        tokenRequired: true
-      },
-      google: {
-        // client_id: '938212626796-7k3gjbuck9mad9qodp1hcbbvt2vk6p9s.apps.googleusercontent.com'
-        client_id: '928335201947-0sbes1i6c5mda66e5r12t539ll3j1ftq.apps.googleusercontent.com'
-      }
-    },
-    redirect: {
-      login: '/login',
-      logout: '/',
-      home: '/hello'
-    },
-    plugins: [
-      '~plugins/auth.js'
-    ]
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           url: '/apis/user/login',
+  //           method: 'post',
+  //           propertyName: 'token'
+  //         },
+  //         logout: true,
+  //         // {
+  //         //   url: '/auth/logout',
+  //         //   method: 'post'
+  //         // },
+  //         user: {
+  //           url: '/apis/user/data/userdata',
+  //           method: 'get',
+  //           propertyName: 'user'
+  //         }
+  //       },
+  //       tokenRequired: true
+  //     },
+  //     google: {
+  //       // client_id: '938212626796-7k3gjbuck9mad9qodp1hcbbvt2vk6p9s.apps.googleusercontent.com'
+  //       client_id: '928335201947-0sbes1i6c5mda66e5r12t539ll3j1ftq.apps.googleusercontent.com'
+  //     }
+  //   },
+  //   redirect: {
+  //     login: '/login',
+  //     logout: '/',
+  //     home: '/hello'
+  //   },
+  //   plugins: [
+  //     '~plugins/auth.js'
+  //   ]
 
-  },
+  // },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
