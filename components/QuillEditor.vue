@@ -9,11 +9,11 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 let Quill = ''
 if (process.client) {
   Quill = require('quill')
 }
-
 export default {
   data () {
     return {
@@ -21,46 +21,54 @@ export default {
     }
   },
   mounted () {
-    // this.createQuillEditor()
-
-    const container = document.getElementById('editor')
-    // const toolbarOptions = this.toolBarOptions()
-    const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
-
-    const options = {
-      debug: 'false',
-      placeholder: 'hello',
-      readOnly: false,
-      modules: {
-        toolbar: toolbarOptions
-      },
-      // bounds: '#contain',
-      theme: 'snow'
-    }
-    // eslint-disable-next-line no-unused-vars
-    const quill = new Quill(container, options)
+    this.createQuillEditor()
   },
-  nethods: {
-    createQuillEditor () {
-      const container = document.getElementById('editor')
-      // const toolbarOptions = this.toolBarOptions()
+  methods: {
+    setToolbarOptions () {
       const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
-
-      const options = {
+      return {
         debug: 'false',
         placeholder: 'hello',
         readOnly: false,
         modules: {
           toolbar: toolbarOptions
         },
-        // bounds: '#contain',
         theme: 'snow'
       }
+    },
+    createQuillEditor () {
+      const container = document.getElementById('editor')
+      const options = this.setToolbarOptions()
       // eslint-disable-next-line no-unused-vars
       const quill = new Quill(container, options)
-    //   this.getText(quill)
-    //   this.onQuillTextChange(this, quill)
+      //   this.getText(quill)
+      this.onQuillTextChange(this, quill)
+    },
+    onQuillTextChange (thiss, quill) {
+      quill.on('text-change', function (delta, oldDelta, source) {
+        if (source === 'api') {
+          console.log('An API call triggered this change.')
+        } else if (source === 'user') {
+          console.log('A user action triggered this change.')
+          thiss.quillContents = JSON.stringify(quill.getContents())
+          thiss.quillText = quill.getText()
+          console.log(thiss.quillContents)
+          // eslint-disable-next-line no-unused-expressions
+          // thiss.saveText()
+        }
+      })
     }
+    //,
+    // saveText:
+    //   _.debounce(function () {
+    //     console.log('inside the debounce')
+    //     if (this.$auth.user.roles === 'guest') {
+    //       this.showLogin()
+    //       return
+    //     }
+    //     this.sendText()
+    //     // console.log('sent')
+    //   }, 1000, { maxWait: 3000 })
   }
 }
 </script>
