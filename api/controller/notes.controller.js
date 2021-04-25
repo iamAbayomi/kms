@@ -58,7 +58,7 @@ exports.findSingleNotes = (req, res) => {
   })
     .catch((err) => {
       res.status(500).send({
-        message: err.message + 'Error retrieivng Notes with id=' + userid
+        message: err.message + 'Error retrieivng Notes with id=' + notes_id
       })
     })
 }
