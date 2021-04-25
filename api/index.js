@@ -7,11 +7,11 @@ app.use(express.urlencoded({ extended: true }))
 
 // Initializing Database
 const db = require('./models')
-// db.sequelize.sync({ alter: true })
+db.sequelize.sync({ alter: true })
 
-require('./routes/user.routes')
-require('./routes/admin.routes')
-require('./routes/notes.routes')
+require('./routes/user.routes')(app)
+require('./routes/admin.routes')(app)
+require('./routes/notes.routes')(app)
 
 // Export the server middleware
 module.exports = app
