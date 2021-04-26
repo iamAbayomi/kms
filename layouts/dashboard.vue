@@ -11,7 +11,7 @@
       </nuxt-link>
       <!-- Begining of menu -->
       <div class="menu">
-        <!-- group of link -->
+        <!-- Group of Notes Title -->
         <div class="link-group">
           <nuxt-link
             v-for="item in notes_group"
@@ -36,6 +36,7 @@
             >
           </nuxt-link>
         </div>
+        <!-- End of Notes Title -->
         <input
           id="add-input"
           v-model="input_field"
