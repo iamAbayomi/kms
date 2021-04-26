@@ -58,7 +58,7 @@ exports.findSingleAdmin = (req, res) => {
   })
     .catch((err) => {
       res.status(500).send({
-        message: err.message + 'Error retrieivng Admin with id=' + userid
+        message: err.message + 'Error retrieivng Admin with id=' + admin_id
       })
     })
 }
@@ -78,7 +78,7 @@ exports.checkAdmin = (req, res) => {
   })
     .catch((err) => {
       res.status(500).send({
-        message: err.message + 'Error retrieivng Admin with id=' + userid
+        message: err.message + 'Error retrieivng Admin with id=' + admin_id
       })
     })
 }
