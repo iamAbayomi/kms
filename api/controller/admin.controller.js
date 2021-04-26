@@ -63,6 +63,26 @@ exports.findSingleAdmin = (req, res) => {
     })
 }
 
+exports.checkAdmin = (req, res) => {
+  const admin_id = req.params.admin_id
+
+  Admin.find({
+    where: {
+      admin_id
+    }
+  }).then((data) => {
+    console.log(data)
+    res.send({
+      data
+    })
+  })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message + 'Error retrieivng Admin with id=' + userid
+      })
+    })
+}
+
 exports.updateAdmin = (req, res) => {
   const needs_id = req.params.text_id
 
