@@ -6,9 +6,9 @@ const Notes = db.notes
 
 exports.createNotes = (req, res) => {
   const notes = {
-    notes_title: req.notes_title,
+    notes_title: req.body.notes_title,
     notes_contents: req.body.notes_contents,
-    notes_delta: req.notes_delta,
+    notes_delta: req.body.notes_delta,
     user_id: req.body.user_id
   }
   Notes.create(notes)
