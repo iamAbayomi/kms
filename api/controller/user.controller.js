@@ -59,7 +59,8 @@ exports.createUser = [([
     surname: req.body.surname,
     password: req.body.password,
     provider: req.body.provider,
-    email: req.body.email
+    email: req.body.email,
+    isAdmin: req.body.isAdmin
   }
 
   console.log(user)
