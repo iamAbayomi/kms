@@ -18,7 +18,7 @@ if (process.client) {
 export default {
   data () {
     return {
-      notes_title: '',
+      notes_title: 'Hello',
       notes_contents: '',
       notes_delta: '',
       saved_status: false
@@ -54,8 +54,8 @@ export default {
           console.log('An API call triggered this change.')
         } else if (source === 'user') {
           console.log('A user action triggered this change.')
-          thiss.quillContents = JSON.stringify(quill.getContents())
-          thiss.quillText = quill.getText()
+          thiss.notes_delta = JSON.stringify(quill.getContents())
+          thiss.notes_contents = quill.getText()
           console.log(thiss.quillContents)
           // eslint-disable-next-line no-unused-expressions
           thiss.saveText()
@@ -74,7 +74,7 @@ export default {
           this.savedStatus = response.status
           this.textId = response.data.text_id
 
-          console.log(this.textId)
+          // console.log(this.textId)
         })
         .catch((error) => {
           console.log(error)
