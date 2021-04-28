@@ -73,7 +73,6 @@ export default {
           console.log(response)
           this.savedStatus = response.status
           this.textId = response.data.text_id
-
           // console.log(this.textId)
         })
         .catch((error) => {
