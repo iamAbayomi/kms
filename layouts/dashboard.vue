@@ -133,6 +133,7 @@ export default {
   },
   mounted () {
     this.getRoutePath()
+    this.getText()
   },
   methods: {
     getRoutePath () {
@@ -155,6 +156,17 @@ export default {
       // this.$set(this.categoriesCard, iterate, this.tempData)
       this.notes_group.push(this.tempData)
       this.removeInputField()
+    },
+    getText () {
+      this.$axios.get('/apis/notes/' + 1)
+        .then((response) => {
+          this.notes_group = response.data
+          // this.textId = response.data.text_id
+          this.savedStatus = response.status
+          console.log(response)
+        }).catch((err) => {
+          console.log(err)
+        })
     },
     showMenuItem () {
       const element = document.getElementById('menu_item_title')
