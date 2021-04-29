@@ -34,7 +34,7 @@ exports.findAllNotes = (req, res) => {
     }
   )
     .then((data) => {
-      res.send({ notes: data })
+      res.send(data)
     }).catch((err) => {
       res.status(500).send({
         message: 'Error retrieving notes for the user=' + err
