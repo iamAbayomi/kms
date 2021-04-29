@@ -115,6 +115,8 @@ export default {
       drawer: null,
       routePath: '',
       notes_group: [
+      ],
+      notes_group_1: [
         {
           notes_id: 1,
           notes_title: 'Hello',
@@ -126,17 +128,35 @@ export default {
       tempData: []
     }
   },
+  // eslint-disable-next-line require-await
+  async fetch () {
+    // this.notes_group = await fetch(
+    //   'http://localhost:3000/apis/notes/1'
+    // ).then(res => res.data)
+    // this.$axios.get('/apis/notes/' + 1)
+    //   .then((response) => {
+    //     this.notes_group = response.data
+    //     // this.textId = response.data.text_id
+    //     this.savedStatus = response.status
+    //     console.log(response)
+    //   }).catch((err) => {
+    //     console.log(err)
+    //   })
+  },
   watch: {
     $route (to, from) {
       this.getRoutePath()
     }
   },
+  created () {
+    this.getText()
+  },
   mounted () {
     this.getRoutePath()
-    this.getText()
   },
   methods: {
     getRoutePath () {
+      console.log('notes group ' + this.notes_group)
       let path = this.$route.path
       path = path.substring(1)
       const newPath = path.charAt(0).toUpperCase() + path.slice(1)
