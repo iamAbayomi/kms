@@ -44,17 +44,17 @@ exports.findAllNotes = (req, res) => {
 
 // Retrieve single notes from database
 exports.findSingleNotes = (req, res) => {
-  const notes_id = req.params.notes_id
+  const notes_id = req.params.note_id
 
-  Notes.find({
+  Notes.findOne({
     where: {
       notes_id
     }
   }).then((data) => {
     console.log(data)
-    res.send({
+    res.send(
       data
-    })
+    )
   })
     .catch((err) => {
       res.status(500).send({

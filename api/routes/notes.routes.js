@@ -9,7 +9,7 @@ module.exports = (app) => {
   router.get('/:user_id', needs.findAllNotes)
 
   // Retrieve one note for one user
-  router.get('/:note_id', needs.findSingleNotes)
+  router.get('/usernotes/:note_id', needs.findSingleNotes)
 
   // Update Notes
   router.put('/:note_id', needs.updateNotes)

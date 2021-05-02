@@ -18,16 +18,31 @@ if (process.client) {
 export default {
   data () {
     return {
+      notes_id: '',
       notes_title: 'Hello',
       notes_contents: '',
       notes_delta: '',
+      pageName: ' ',
       saved_status: false
     }
   },
   mounted () {
+    this.getNotesId()
     this.createQuillEditor()
   },
   methods: {
+    getNotesId () {
+      // eslint-disable-next-line prefer-const
+      let path = this.$route.path
+      path = path.substring(1)
+      // eslint-disable-next-line no-unused-vars
+      const [pageName, notesId] = path.split('/')
+      this.notes_id = notesId
+      // console.log('this is the path ' + path)
+      // console.log('this is the notes_id ' + notesId +
+      //  ' this is the pagename  ' + pageName)
+    },
+
     setToolbarOptions () {
       const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
       return {
@@ -45,7 +60,7 @@ export default {
       const options = this.setToolbarOptions()
       // eslint-disable-next-line no-unused-vars
       const quill = new Quill(container, options)
-      //   this.getText(quill)
+      this.getText(quill)
       this.onQuillTextChange(this, quill)
     },
     onQuillTextChange (thiss, quill) {
@@ -61,6 +76,15 @@ export default {
           thiss.saveText()
         }
       })
+    },
+    getText (quill) {
+      this.$axios.get('/apis/notes/usernotes/' + this.notes_id)
+        .then((response) => {
+          console.log(response.data.notes_delta)
+          quill.setContents(JSON.parse(response.data.notes_delta))
+        }).catch((err) => {
+          console.log(err)
+        })
     },
     // Method to create text
     createText () {
@@ -81,6 +105,7 @@ export default {
           console.log(error)
         })
     },
+    // Save text in the user database.
     saveText:
       _.debounce(function () {
         console.log('inside the debounce')
