@@ -62,7 +62,9 @@ export default {
         }
       })
     },
+    // Method to create text
     createText () {
+      // send the request to apis to create the text
       this.$axios.post('/apis/notes/', {
         notes_title: this.notes_title,
         notes_contents: this.notes_contents,
