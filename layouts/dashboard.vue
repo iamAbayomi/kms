@@ -128,21 +128,6 @@ export default {
       tempData: []
     }
   },
-  // eslint-disable-next-line require-await
-  async fetch () {
-    // this.notes_group = await fetch(
-    //   'http://localhost:3000/apis/notes/1'
-    // ).then(res => res.data)
-    // this.$axios.get('/apis/notes/' + 1)
-    //   .then((response) => {
-    //     this.notes_group = response.data
-    //     // this.textId = response.data.text_id
-    //     this.savedStatus = response.status
-    //     console.log(response)
-    //   }).catch((err) => {
-    //     console.log(err)
-    //   })
-  },
   watch: {
     $route (to, from) {
       this.getRoutePath()
