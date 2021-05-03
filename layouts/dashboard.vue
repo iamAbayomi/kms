@@ -71,19 +71,15 @@
 
       <v-tooltip bottom>
         <template #activator="{ on, attrs }">
-          <nuxt-link
-            class="make-link"
-            to="/onboarding/product"
-          >
-            <v-btn icon>
-              <v-icon
-                v-bind="attrs"
-                v-on="on"
-              >
-                mdi-trash-can
-              </v-icon>
-            </v-btn>
-          </nuxt-link>
+          <v-btn icon>
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
+              @click="deleteNotes"
+            >
+              mdi-trash-can
+            </v-icon>
+          </v-btn>
         </template>
         <span>Delete</span>
       </v-tooltip>
@@ -123,6 +119,7 @@ export default {
           notes_content: 'This is a content'
         }
       ],
+      notes_id: '',
       input_field: '',
       edit_field: '',
       tempData: []
@@ -137,9 +134,21 @@ export default {
     this.getText()
   },
   mounted () {
+    this.getNotesId()
     this.getRoutePath()
   },
   methods: {
+    getNotesId () {
+      // eslint-disable-next-line prefer-const
+      let path = this.$route.path
+      path = path.substring(1)
+      // eslint-disable-next-line no-unused-vars
+      const [pageName, notesId] = path.split('/')
+      this.notes_id = notesId
+      // console.log('this is the path ' + path)
+      // console.log('this is the notes_id ' + notesId +
+      //  ' this is the pagename  ' + pageName)
+    },
     getRoutePath () {
       console.log('notes group ' + this.notes_group)
       let path = this.$route.path
@@ -188,7 +197,18 @@ export default {
           this.notes_group = response.data
           // this.textId = response.data.text_id
           this.savedStatus = response.status
+          this.getNotesId()
           console.log(response)
+        }).catch((err) => {
+          console.log(err)
+        })
+    },
+    deleteNotes () {
+      this.$axios.delete('/apis/notes/' + this.notes_id)
+        .then((response) => {
+          // this.notes_group = response.data
+          console.log(response)
+          this.getText()
         }).catch((err) => {
           console.log(err)
         })
