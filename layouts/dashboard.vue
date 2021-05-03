@@ -153,14 +153,34 @@ export default {
       this.$auth.logout()
     },
     createNotes () {
-      this.tempData = {
-        notes_id: 2,
-        notes_title: this.input_field,
-        notes_content: this.input_field
-      }
-      // this.$set(this.categoriesCard, iterate, this.tempData)
-      this.notes_group.push(this.tempData)
+      // this.tempData = {
+      //   notes_id: 2,
+      //   notes_title: this.input_field,
+      //   notes_content: this.input_field
+      // }
+      // // this.$set(this.categoriesCard, iterate, this.tempData)
+      // this.notes_group.push(this.tempData)
+      this.createText()
       this.removeInputField()
+    },
+    // Method to create text
+    createText () {
+      // send the request to apis to create the text
+      this.$axios.post('/apis/notes/', {
+        notes_title: this.input_field,
+        notes_contents: '',
+        notes_delta: '',
+        user_id: 1
+      })
+        .then((response) => {
+          console.log(response)
+          this.savedStatus = response.status
+          this.getText()
+          // console.log(this.textId)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     getText () {
       this.$axios.get('/apis/notes/' + 1)
@@ -178,6 +198,7 @@ export default {
       element.classList.remove('hide')
     },
     removeMenuItem () {
+      console.log('removeMenuItem')
       this.showEditField()
       const element = document.getElementById('menu_item_title')
       element.classList.add('hide')

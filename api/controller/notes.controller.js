@@ -64,10 +64,10 @@ exports.findSingleNotes = (req, res) => {
 }
 
 exports.updateNotes = (req, res) => {
-  const needs_id = req.params.text_id
+  const notes_id = req.params.note_id
 
   Notes.update(req.body, {
-    where: { needs_id }
+    where: { notes_id }
   }).then((num) => {
     console.log(num)
     if (num == 1) {
@@ -76,13 +76,13 @@ exports.updateNotes = (req, res) => {
       })
     } else {
       res.send({
-        message: 'Cannot update Notes with id= ' + needs_id + 'Maybe Notes was not found ' +
+        message: 'Cannot update Notes with id= ' + note_id + 'Maybe Notes was not found ' +
         'or request body is empty!'
       })
     }
   }).catch((err) => {
     res.status(500).send({
-      message: err.message + 'Error updating Notes with id=' + needs_id
+      message: err.message + 'Error updating Notes with id=' + note_id
     })
   })
 }

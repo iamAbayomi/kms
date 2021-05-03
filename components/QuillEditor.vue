@@ -18,12 +18,14 @@ if (process.client) {
 export default {
   data () {
     return {
-      notes_id: '',
-      notes_title: 'Hello',
-      notes_contents: '',
-      notes_delta: '',
+      notes_group: {
+        notes_id: '',
+        notes_title: '',
+        notes_contents: '',
+        notes_delta: ''
+      },
       pageName: ' ',
-      saved_status: false
+      saved_status: true
     }
   },
   mounted () {
@@ -37,7 +39,7 @@ export default {
       path = path.substring(1)
       // eslint-disable-next-line no-unused-vars
       const [pageName, notesId] = path.split('/')
-      this.notes_id = notesId
+      this.notes_group.notes_id = notesId
       // console.log('this is the path ' + path)
       // console.log('this is the notes_id ' + notesId +
       //  ' this is the pagename  ' + pageName)
@@ -69,42 +71,41 @@ export default {
           console.log('An API call triggered this change.')
         } else if (source === 'user') {
           console.log('A user action triggered this change.')
-          thiss.notes_delta = JSON.stringify(quill.getContents())
-          thiss.notes_contents = quill.getText()
-          console.log(thiss.quillContents)
+          thiss.notes_group.notes_delta = JSON.stringify(quill.getContents())
+          thiss.notes_group.notes_contents = quill.getText()
+          console.log(thiss.notes_group.notes_delta)
           // eslint-disable-next-line no-unused-expressions
           thiss.saveText()
         }
       })
     },
     getText (quill) {
-      this.$axios.get('/apis/notes/usernotes/' + this.notes_id)
+      this.$axios.get('/apis/notes/usernotes/' + this.notes_group.notes_id)
         .then((response) => {
+          this.notes_group = response.data
           console.log(response.data.notes_delta)
           quill.setContents(JSON.parse(response.data.notes_delta))
         }).catch((err) => {
           console.log(err)
         })
     },
-    // Method to create text
-    createText () {
-      // send the request to apis to create the text
-      this.$axios.post('/apis/notes/', {
-        notes_title: this.notes_title,
-        notes_contents: this.notes_contents,
-        notes_delta: this.notes_delta,
-        user_id: 1
+    updateText () {
+      this.$axios.put('/apis/notes/' + this.notes_group.notes_id, {
+        notes_title: this.notes_group.notes_title,
+        notes_contents: this.notes_group.notes_contents,
+        notes_delta: this.notes_group.notes_delta
       })
         .then((response) => {
           console.log(response)
+          // console.log('Here is quill contents')
+          // console.log(this.quillContents)
           this.savedStatus = response.status
-          this.textId = response.data.text_id
-          // console.log(this.textId)
         })
         .catch((error) => {
           console.log(error)
         })
     },
+
     // Save text in the user database.
     saveText:
       _.debounce(function () {
@@ -119,8 +120,6 @@ export default {
     sendText () {
       if (this.saved_status) {
         this.updateText()
-      } else {
-        this.createText()
       }
     }
   }
