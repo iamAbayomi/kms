@@ -80,12 +80,12 @@
                 v-bind="attrs"
                 v-on="on"
               >
-                mdi-circle-slice-1
+                mdi-trash-can
               </v-icon>
             </v-btn>
           </nuxt-link>
         </template>
-        <span>Onboarding</span>
+        <span>Delete</span>
       </v-tooltip>
       <v-tooltip bottom>
         <template #activator="{ on, attrs }">
