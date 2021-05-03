@@ -76,13 +76,31 @@ exports.updateNotes = (req, res) => {
       })
     } else {
       res.send({
-        message: 'Cannot update Notes with id= ' + note_id + 'Maybe Notes was not found ' +
+        message: 'Cannot update Notes with id= ' + notes_id + 'Maybe Notes was not found ' +
         'or request body is empty!'
       })
     }
   }).catch((err) => {
     res.status(500).send({
-      message: err.message + 'Error updating Notes with id=' + note_id
+      message: err.message + 'Error updating Notes with id=' + notes_id
+    })
+  })
+}
+
+exports.deleteNote = (req, res) => {
+  const notes_id = req.params.note_id
+
+  Notes.destroy({
+    where: {
+      notes_id
+    }
+  }).then((data) => {
+    res.send({
+      data
+    })
+  }).catch((err) => {
+    res.status(500).send({
+      message: err.message + 'Error deleting notes with id=' + notes_id
     })
   })
 }
