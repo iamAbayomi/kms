@@ -22,7 +22,7 @@
                 Spiinge  interactive guide helps you build products and documents the results as you go.
               </p>
               <div class="home-button-container">
-                <a href="notes/hello">
+                <a href="/signup">
                   <button class="hire-me">
                     Sign Up
                   </button>
