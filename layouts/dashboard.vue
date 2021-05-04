@@ -197,7 +197,6 @@ export default {
           this.notes_group = response.data
           // this.textId = response.data.text_id
           this.savedStatus = response.status
-          this.getNotesId()
           console.log(response)
         }).catch((err) => {
           console.log(err)
