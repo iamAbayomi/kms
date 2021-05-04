@@ -119,7 +119,7 @@ export default {
       }).then((response) => {
         console.log('success')
         console.log(response)
-        this.$router.push('/hello')
+        this.$router.push('/notes')
         // this.$router.push('/newcategories')
       }).catch((error) => {
         console.log(error.response)

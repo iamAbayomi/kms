@@ -193,7 +193,7 @@ export default {
           }).then(() => {
             console.log('success')
             //  mixpanel.track('signUp', { provider: 'google' })
-            this.$router.push('/ideas')
+            this.$router.push('/notes')
           })
             .catch((error) => {
               console.log(error.response)
