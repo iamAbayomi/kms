@@ -160,6 +160,7 @@ export default {
     },
     logOut () {
       this.$auth.logout()
+      this.$router.push('/')
     },
     createNotes () {
       // this.tempData = {
