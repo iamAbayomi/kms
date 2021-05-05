@@ -17,7 +17,7 @@
             v-for="item in notes_group"
             :key="item.notes_id"
             class="menu-item"
-            :to="item.notes_id.toString()"
+            :to="'notes/'+item.notes_id.toString()"
             exact-active-class="menu-active"
           >
             <p
@@ -106,6 +106,7 @@
 <script>
 /* eslint-disable no-console */
 export default {
+  middleware: 'auth',
   data () {
     return {
       drawer: null,
