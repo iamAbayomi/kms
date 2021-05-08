@@ -17,7 +17,7 @@
             v-for="item in notes_group"
             :key="item.notes_id"
             class="menu-item"
-            :to="'notes/'+item.notes_id.toString()"
+            :to="item.notes_id.toString()"
             exact-active-class="menu-active"
           >
             <p
