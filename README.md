@@ -1,6 +1,6 @@
 # Spiinge 
 
-![image](assets\images\github-logo.png) 
+![image]((https://raw.githubusercontent.com/iamAbayomi/kms/master/assets/images/github-logo.png) 
 
 
 Spiinge is a text editor. It has the basic functionality of typical text editors. It allows you to create, read, update and delete text. You can also create several texts from the main menu view. Unlike other text editors where it takes you several steps to create text.
