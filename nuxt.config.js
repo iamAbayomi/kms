@@ -63,7 +63,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/vuetify',
     '@nuxtjs/auth-next'
   ],
   /*
