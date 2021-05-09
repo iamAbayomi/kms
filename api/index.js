@@ -10,7 +10,8 @@ const db = require('./models')
 // db.sequelize.sync({ alter: true })
 
 // Initializing MongoDb
-const mongo = require('./mongodb')
+require('./mongodb/index')
+require('./mongodb/mongo.routes')(app)
 
 require('./routes/user.routes')(app)
 require('./routes/admin.routes')(app)
