@@ -1,0 +1,36 @@
+# app.yaml
+# env: flex
+# runtime: nodejs
+# # Also add the variables below
+# # Save your money. Thank me later
+# manual_scaling:
+#   instances: 1
+# resources:
+#   cpu: 1
+#   memory_gb: 0.5
+#   disk_size_gb: 10
+runtime: nodejs10
+
+instance_class: F2
+
+handlers:
+  - url: /_nuxt
+    static_dir: .nuxt/dist/client
+    secure: always
+
+  - url: /(.*\.(gif|png|jpg|ico|txt))$
+    static_files: static/\1
+    upload: static/.*\.(gif|png|jpg|ico|txt)$
+    secure: always
+
+  - url: /.*
+    script: auto
+    secure: always
+
+network:
+  forwarded_ports:
+    - 8080/tcp    
+
+env_variables:
+  HOST: '0.0.0.0'
+      
