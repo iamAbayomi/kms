@@ -7,7 +7,10 @@ app.use(express.urlencoded({ extended: true }))
 
 // Initializing Database
 const db = require('./models')
-db.sequelize.sync({ alter: true })
+// db.sequelize.sync({ alter: true })
+
+// Initializing MongoDb
+const mongo = require('./mongodb')
 
 require('./routes/user.routes')(app)
 require('./routes/admin.routes')(app)
