@@ -3,7 +3,7 @@ const Sequelize = require('sequelize')
 let config
 
 // Check if we need to run Nuxt in development mode
-const isDev = process.env.NODE_ENV != 'production'
+const isDev = process.env.NODE_ENV !== 'production'
 
 if (isDev) {
   config = require('../config/db.config')
