@@ -1,5 +1,17 @@
+/* eslint-disable no-console */
 const Sequelize = require('sequelize')
-const config = require('../config/geroku.config')
+let config
+
+// Check if we need to run Nuxt in development mode
+const isDev = process.env.NODE_ENV !== 'production'
+
+if (isDev) {
+  config = require('../config/db.config')
+  console.log('development')
+} else {
+  config = require('../config/heroku.config')
+  console.log('production')
+}
 
 const sequelize = new Sequelize(
   config.DB,
