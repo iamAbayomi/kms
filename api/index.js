@@ -10,7 +10,7 @@ const db = require('./models')
 
 // Initializing MongoDb
 require('./mongodb/index')
-// require('./mongodb/mongo.routes')(app)
+require('./mongodb/mongo.routes')(app)
 
 require('./routes/user.routes')(app)
 require('./routes/admin.routes')(app)

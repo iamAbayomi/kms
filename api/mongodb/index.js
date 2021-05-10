@@ -21,29 +21,36 @@ const Courses = mongoose.model('Courses', coursesSchema, 'Courses')
 const resultsSchema = new mongoose.Schema({})
 const Results = mongoose.model('Results', resultsSchema, 'Results')
 
-Student.find({})
-  .then((data) => {
-    // res.send(data)
-    console.log(data)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+exports.sendStudents = (req, res) => {
+  Student.find({})
+    .then((data) => {
+      res.send(data)
+      console.log(data)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.send(err)
+    })
+}
 
-Courses.find({})
-  .then((data) => {
+exports.sendCourses = (req, res) => {
+  Courses.find({})
+    .then((data) => {
     // res.send(data)
-    console.log(data)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+      console.log(data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
-Results.find({})
-  .then((data) => {
+exports.sendResults = (req, res) => {
+  Results.find({})
+    .then((data) => {
     // res.send(data)
-    console.log(data)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+      console.log(data)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
