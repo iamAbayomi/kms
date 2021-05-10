@@ -36,7 +36,7 @@ exports.sendStudents = (req, res) => {
 exports.sendCourses = (req, res) => {
   Courses.find({})
     .then((data) => {
-    // res.send(data)
+      res.send(data)
       console.log(data)
     })
     .catch((err) => {
@@ -47,7 +47,7 @@ exports.sendCourses = (req, res) => {
 exports.sendResults = (req, res) => {
   Results.find({})
     .then((data) => {
-    // res.send(data)
+      res.send(data)
       console.log(data)
     })
     .catch((err) => {
