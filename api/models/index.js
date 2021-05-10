@@ -9,7 +9,7 @@ if (isDev) {
   config = require('../config/db.config')
   console.log('development')
 } else {
-  config = require('../config/heroku.config')
+  config = require('../config/geroku.config')
   console.log('production')
 }
 
