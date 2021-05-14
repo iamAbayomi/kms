@@ -23,7 +23,6 @@
             <p
               id="menu_item_title"
               class="menu-text"
-              @click="removeMenuItem"
             >
               {{ item.notes_title }}
             </p>
@@ -207,7 +206,7 @@ export default {
     deleteNotes () {
       this.$axios.delete('/apis/notes/' + this.notes_id)
         .then((response) => {
-          // this.notes_group = response.data
+          this.getNotesId()
           console.log(response)
           this.getText()
         }).catch((err) => {
@@ -220,7 +219,7 @@ export default {
     },
     removeMenuItem () {
       console.log('removeMenuItem')
-      // this.showEditField()
+      this.showEditField()
       const element = document.getElementById('menu_item_title')
       element.classList.add('hide')
     },
