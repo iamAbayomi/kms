@@ -198,6 +198,7 @@ export default {
         .then((response) => {
           this.notes_group = response.data
           // this.textId = response.data.text_id
+          console.log(this.$auth)
           this.savedStatus = response.status
           console.log(response)
         }).catch((err) => {
