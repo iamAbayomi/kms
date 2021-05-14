@@ -194,7 +194,7 @@ export default {
         })
     },
     getText () {
-      this.$axios.get('/apis/notes/' + 1)
+      this.$axios.get('/apis/notes/' + this.$auth.user.id)
         .then((response) => {
           this.notes_group = response.data
           // this.textId = response.data.text_id
