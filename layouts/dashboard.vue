@@ -27,13 +27,13 @@
             >
               {{ item.notes_title }}
             </p>
-            <input
+            <!-- <input
               id="edit-input"
               v-model="edit_field"
               class="name-text hide"
               placeholder="Edit notes title"
               @keyup.enter="editNotes"
-            >
+            > -->
           </nuxt-link>
         </div>
         <!-- End of Notes Title -->
@@ -198,7 +198,6 @@ export default {
         .then((response) => {
           this.notes_group = response.data
           // this.textId = response.data.text_id
-          console.log(this.$auth.user)
           this.savedStatus = response.status
           console.log(response)
         }).catch((err) => {
@@ -221,7 +220,7 @@ export default {
     },
     removeMenuItem () {
       console.log('removeMenuItem')
-      this.showEditField()
+      // this.showEditField()
       const element = document.getElementById('menu_item_title')
       element.classList.add('hide')
     },
