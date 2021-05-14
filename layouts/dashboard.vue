@@ -181,7 +181,7 @@ export default {
         notes_title: this.input_field,
         notes_contents: '',
         notes_delta: '',
-        user_id: 1
+        user_id: this.$auth.user.id
       })
         .then((response) => {
           console.log(response)
@@ -198,7 +198,7 @@ export default {
         .then((response) => {
           this.notes_group = response.data
           // this.textId = response.data.text_id
-          console.log(this.$auth)
+          console.log(this.$auth.user)
           this.savedStatus = response.status
           console.log(response)
         }).catch((err) => {
