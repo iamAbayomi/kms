@@ -44,7 +44,7 @@ export default {
       // console.log('this is the notes_id ' + notesId +
       //  ' this is the pagename  ' + pageName)
     },
-
+    // Set the toolbar Options
     setToolbarOptions () {
       const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
       return {
@@ -57,6 +57,7 @@ export default {
         theme: 'snow'
       }
     },
+    // Create Quill Editor
     createQuillEditor () {
       const container = document.getElementById('editor')
       const options = this.setToolbarOptions()
@@ -65,6 +66,7 @@ export default {
       this.getText(quill)
       this.onQuillTextChange(this, quill)
     },
+    // Listener for the Text Editor Section.
     onQuillTextChange (thiss, quill) {
       quill.on('text-change', function (delta, oldDelta, source) {
         if (source === 'api') {
@@ -79,6 +81,7 @@ export default {
         }
       })
     },
+    // Get the notes of the user.
     getText (quill) {
       this.$axios.get('/apis/notes/usernotes/' + this.notes_group.notes_id)
         .then((response) => {
@@ -89,6 +92,7 @@ export default {
           console.log(err)
         })
     },
+    // Update the user notes.
     updateText () {
       this.$axios.put('/apis/notes/' + this.notes_group.notes_id, {
         notes_title: this.notes_group.notes_title,
