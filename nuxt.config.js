@@ -65,8 +65,20 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
+    '@nuxtjs/google-analytics'
   ],
+
+  googleAnalytics: {
+    id: 'UA-165979264-1', // Used as fallback if no runtime config is provided
+    debug: {
+      enabled: true,
+      sendHitTask: true
+      // enabled: false,
+      // sendHitTask: false
+    }
+  },
+
   /*
   ** Auth Nuxt module configuration
   ** See https://auth.nuxtjs.org/api/options.html
