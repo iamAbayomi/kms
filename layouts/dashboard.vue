@@ -125,6 +125,11 @@ export default {
       tempData: []
     }
   },
+  head () {
+    return {
+      title: 'Spiinge | Product'
+    }
+  },
   watch: {
     $route (to, from) {
       this.getRoutePath()
@@ -247,6 +252,7 @@ export default {
       element.classList.add('hide')
     }
   }
+
 }
 </script>
 
