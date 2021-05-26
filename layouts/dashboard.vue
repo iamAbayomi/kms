@@ -150,6 +150,7 @@ export default {
       // eslint-disable-next-line no-unused-vars
       const [pageName, notesId] = path.split('/')
       this.notes_id = notesId
+      // console.log('this is the notes title ' + this.notes_groupthis.notesId.notes_title)
       this.routePath = pageName
       // console.log('this is the path ' + path)
       // console.log('this is the notes_id ' + notesId +
