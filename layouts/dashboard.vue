@@ -127,7 +127,7 @@ export default {
   },
   head () {
     return {
-      title: 'Spiinge | Product'
+      title: 'Spiinge | Notes'
     }
   },
   watch: {
@@ -150,16 +150,17 @@ export default {
       // eslint-disable-next-line no-unused-vars
       const [pageName, notesId] = path.split('/')
       this.notes_id = notesId
+      this.routePath = pageName
       // console.log('this is the path ' + path)
       // console.log('this is the notes_id ' + notesId +
       //  ' this is the pagename  ' + pageName)
     },
     getRoutePath () {
       console.log('notes group ' + this.notes_group)
-      let path = this.$route.path
-      path = path.substring(1)
-      const newPath = path.charAt(0).toUpperCase() + path.slice(1)
-      this.routePath = newPath
+      // let path = this.$route.path
+      // path = path.substring(1)
+      // const newPath = path.charAt(0).toUpperCase() + path.slice(1)
+      // this.routePath = newPath
       // this.routePath = document.title
       // console.log(document.title)
     },
