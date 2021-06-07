@@ -128,7 +128,7 @@ export default {
       })
     },
     signInWithGoogle () {
-      // this.$auth.loginWith('google')
+      this.$auth.loginWith('google')
     }
   }
 }
