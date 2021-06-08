@@ -15,7 +15,8 @@ export default async function ({ app }) {
 
       const authStrategy = auth.strategy.name
       if (authStrategy === 'facebook' || authStrategy === 'google') {
-        const token = auth.getToken(authStrategy).substr(7)
+        // const token = auth.getToken(authStrategy).substr(7)
+        const token = auth.strategy.token.get().substr(7)
         app.$auth.user.provider = 'google'
         // const authStrategyConverted = authStrategy === 'facebook' ? 'fb' : 'google'
 
@@ -26,7 +27,7 @@ export default async function ({ app }) {
           const { data, token } = await app.$axios.$post(url, app.$auth.user)
           auth.setToken('local', 'Bearer ' + token)
           console.log(data)
-          console.log(token)
+          console.log(token)``
           console.log('I am here')
           setTimeout(async () => {
             auth.setStrategy('local')
