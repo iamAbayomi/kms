@@ -11,7 +11,7 @@ const db = require('./models')
 // use cors
 // require('./utilities/cors')(app)
 // require('./cors')(app)
-
+require('./utilities/cors')(app)
 // Initializing MongoDb
 require('./mongodb/index')
 require('./mongodb/mongo.routes')(app)
