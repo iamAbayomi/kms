@@ -3,7 +3,7 @@
 export default async function ({ app }) {
   console.log('auth executed')
   if (process.client) {
-    console.log('This is the user', app.$auth.user)
+    console.log('This is the user', app.$auth)
     try {
       if (!app.$auth) {
         console.log(app.$auth)
@@ -14,8 +14,11 @@ export default async function ({ app }) {
       const auth = app.$auth
 
       const authStrategy = auth.strategy.name
+      console.log(authStrategy)
       if (authStrategy === 'facebook' || authStrategy === 'google') {
         const token = auth.getToken(authStrategy).substr(7)
+        // const token = auth.strategy.token.get().substr(7)
+        console.log('This is the token ' + token)
         app.$auth.user.provider = 'google'
         // const authStrategyConverted = authStrategy === 'facebook' ? 'fb' : 'google'
 

@@ -8,6 +8,10 @@ app.use(express.urlencoded({ extended: true }))
 const db = require('./models')
 // db.sequelize.sync({ alter: true })
 
+// use cors
+// require('./utilities/cors')(app)
+// require('./cors')(app)
+
 // Initializing MongoDb
 require('./mongodb/index')
 require('./mongodb/mongo.routes')(app)
