@@ -65,7 +65,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next',
+    '@nuxtjs/auth',
     '@nuxtjs/google-analytics'
   ],
 
@@ -107,11 +107,11 @@ export default {
       },
       google: {
         // client_id: '938212626796-7k3gjbuck9mad9qodp1hcbbvt2vk6p9s.apps.googleusercontent.com'
-        clientId: '928335201947-0sbes1i6c5mda66e5r12t539ll3j1ftq.apps.googleusercontent.com',
-        responseType: 'code',
-        accessType: 'offline',
-        grantType: 'authorization_code',
-        codeChallengeMethod: 'S256'
+        clientId: '928335201947-0sbes1i6c5mda66e5r12t539ll3j1ftq.apps.googleusercontent.com'
+        // responseType: 'code',
+        // accessType: 'offline',
+        // grantType: 'authorization_code',
+        // codeChallengeMethod: 'S256'
       }
     },
     redirect: {
