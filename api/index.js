@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Express
 const express = require('express')
 const app = express()
@@ -17,6 +18,8 @@ require('./mongodb/index')
 require('./mongodb/mongo.routes')(app)
 
 // require('./utilities/secretManager')
+
+// console.log('This is the LocalHost' + process.env.LOCAL_DB_USER)
 
 require('./routes/user.routes')(app)
 require('./routes/admin.routes')(app)
