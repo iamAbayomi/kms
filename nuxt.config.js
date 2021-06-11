@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'kms',
+    title: 'Spiinge',
     htmlAttrs: {
       lang: 'en'
     },
@@ -153,6 +153,14 @@ export default {
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    terser: {
+      // https://github.com/terser/terser#compress-options
+      terserOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    }
   },
   loading: {
     color: 'blue',
