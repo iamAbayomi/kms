@@ -137,17 +137,13 @@ export default {
 
   publicRuntimeConfig: {
     axios: {
-      // browserBaseURL: 'https://www.spiinge.com/'
-      // baseURL: 'http://localhost:3000'
-      // baseURL: '/'
       baseURL: process.env.NODE_ENV === 'production' ? 'https://www.spiinge.com/' : 'http://localhost:3000'
     },
-    // baseUrl: 'https://www.spiinge.com/'
-    // baseURL: 'http://localhost:3000'
-    // baseURL: '/'
     baseURL: process.env.NODE_ENV === 'production' ? 'https://www.spiinge.com/' : 'http://localhost:3000'
   },
-
+  privateRuntimeConfig: {
+    
+  },
   dev: {
     dev: process.env.NODE_ENV !== 'production'
   },
