@@ -19,8 +19,6 @@ require('./mongodb/mongo.routes')(app)
 
 // require('./utilities/secretManager')
 
-console.log('This is the LocalHost' + process.env.HEROKU_DB_HOST)
-
 require('./routes/user.routes')(app)
 require('./routes/admin.routes')(app)
 require('./routes/notes.routes')(app)
