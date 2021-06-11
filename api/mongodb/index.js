@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://root:aLebZrmib8hca8Sl@cluster0.yn8mm.mongodb.net/databaseProject')
+mongoose.connect(`mongodb+srv://root:${process.env.MONGO_DB_PASSWORD}@cluster0.yn8mm.mongodb.net/databaseProject`)
 
 const db = mongoose.connection
 
