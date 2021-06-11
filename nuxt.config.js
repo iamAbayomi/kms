@@ -50,9 +50,9 @@ export default {
   ],
 
   server: {
-    port: 3000, // default: 3000
-    host: '0.0.0.0', // default: localhost,
-    timing: false
+    // port: 3000, // default: 3000
+    // host: '0.0.0.0', // default: localhost,
+    //  timing: false
 
   },
 
@@ -142,8 +142,13 @@ export default {
     baseURL: process.env.NODE_ENV === 'production' ? 'https://www.spiinge.com/' : 'http://localhost:3000'
   },
   privateRuntimeConfig: {
-    
+
   },
+
+  env: {
+    // LOCAL_DB_HOST : ''
+  },
+
   dev: {
     dev: process.env.NODE_ENV !== 'production'
   },
