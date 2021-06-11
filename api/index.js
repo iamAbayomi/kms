@@ -16,7 +16,7 @@ const db = require('./models')
 require('./mongodb/index')
 require('./mongodb/mongo.routes')(app)
 
-require('./utilities/secretManager')
+// require('./utilities/secretManager')
 
 require('./routes/user.routes')(app)
 require('./routes/admin.routes')(app)
