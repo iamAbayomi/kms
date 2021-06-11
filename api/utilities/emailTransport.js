@@ -2,12 +2,12 @@
 
 exports.createTransport = (nodemailer, emailContent, res) => {
   const transport = nodemailer.createTransport({
-    host: 'mail.privateemail.com',
-    port: 465,
+    host: '',
+    port: '',
     secure: true,
     auth: {
-      user: 'contact@spiinge.com',
-      pass: 'ganibayomi4'
+      user: '',
+      pass: ''
     },
     tls: {
       rejectUnauthorized: false
