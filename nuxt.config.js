@@ -80,10 +80,10 @@ export default {
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID, // Used as fallback if no runtime config is provided
     debug: {
-      enabled: true,
-      sendHitTask: true
-      // enabled: false,
-      // sendHitTask: false
+      // enabled: true,
+      // sendHitTask: true
+      enabled: false,
+      sendHitTask: false
     }
   },
 
