@@ -15,7 +15,7 @@ db.sequelize.sync({ alter: true })
 
 // Initializing MongoDb
 // require('./mongodb/index')
-// require('./mongodb/mongo.routes')(app)
+require('./mongodb/mongo.routes')(app)
 
 // require('./utilities/secretManager')
 
