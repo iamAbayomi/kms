@@ -7,15 +7,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 // Initializing Database
 const db = require('./models')
-// db.sequelize.sync({ alter: true })
+db.sequelize.sync({ alter: true })
 
 // use cors
 // require('./utilities/cors')(app)
 // require('./cors')(app)
 
 // Initializing MongoDb
-require('./mongodb/index')
-require('./mongodb/mongo.routes')(app)
+// require('./mongodb/index')
+// require('./mongodb/mongo.routes')(app)
 
 // require('./utilities/secretManager')
 
