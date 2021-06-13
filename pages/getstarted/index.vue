@@ -4,6 +4,7 @@
     <!-- <p class="test-text">
       loggedIn {{ data }}
     </p> -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans">
     <section class="contact-section">
       <!--Begining of Flex Container -->
       <div class="section-container">
@@ -20,7 +21,7 @@
               <input type="submit" value="Sign Up with Email" class="blue-button">
             </nuxt-link>
           </div>
-          <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans">
+
           <!-- Google Sign In Button -->
           <div
             class="google-signin-btn-section"
@@ -195,7 +196,7 @@ body{
 .div-button{
   width: 100%;
   height: 40px;
-  margin: 16px auto 20px auto;
+  margin: 20px auto 40px auto;
 }
 
 .blue-button{
@@ -219,7 +220,7 @@ body{
   border-color:#313741;
   border-radius: 4px;
   border-style: solid;
-  margin: 20px auto 10px auto;
+  margin: 50px auto 10px auto;
 }
 
 .middle-text{
