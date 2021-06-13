@@ -49,7 +49,7 @@ export default {
       const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
       return {
         debug: 'false',
-        placeholder: 'hello',
+        placeholder: 'What do you want to build',
         readOnly: false,
         modules: {
           toolbar: toolbarOptions
