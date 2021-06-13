@@ -122,7 +122,7 @@ export default {
       }
     },
     redirect: {
-      login: '/login',
+      login: '/getstarted',
       logout: '/',
       home: '/notes'
     },
