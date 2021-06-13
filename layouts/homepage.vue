@@ -19,7 +19,7 @@
                 Spiinge helps you manage products
               </p>
               <p class="main-description">
-                With Spiinge you can create many products and track the stages of development in your product.
+                With Spiinge you can create many products and track the product development stage.
               </p>
               <div class="home-button-container">
                 <a href="/notes">
