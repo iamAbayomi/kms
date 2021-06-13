@@ -16,13 +16,13 @@
             <!-- Value Proposition for text -->
             <div class="value-prop-text">
               <p class="main-text">
-                Spiinge helps you build products
+                Spiinge helps you manage products
               </p>
               <p class="main-description">
                 Spiinge  interactive guide helps you build products and documents the results as you go.
               </p>
               <div class="home-button-container">
-                <a href="/dashboard">
+                <a href="/notes">
                   <button class="hire-me">
                     Sign Up
                   </button>
