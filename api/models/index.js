@@ -45,9 +45,13 @@ db.sequelize = sequelize
 
 db.user = require('../models/user.model')(sequelize, Sequelize)
 db.admin = require('../models/admin.model')(sequelize, Sequelize)
-db.notes = require('../models/notes.model')(sequelize, Sequelize)
+db.product = require('../models/product.model')(sequelize, Sequelize)
+db.stage = require('../models/stage.model')(sequelize, Sequelize)
 
-db.user.hasMany(db.notes, { foreignKey: 'user_id' })
+db.user.hasMany(db.product, { foreignKey: 'user_id' })
+db.user.hasMany(db.stage, { foreignKey: 'user_id' })
+db.product.hasMany(db.stage, { foreignKey: 'stage_id' })
+
 db.user.hasOne(db.admin, { foreignKey: 'user_id' })
 
 module.exports = db
