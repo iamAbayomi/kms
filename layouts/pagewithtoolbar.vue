@@ -1,38 +1,26 @@
 <template>
-  <!-- <v-main> -->
-  <div class="product-section">
-    <p class="section-title">
-      What's the name of your product
-    </p>
-    <div class="form">
-      <div class="content">
-        <p class="header-text heading">
-          Product Name
-        </p>
-        <input
-          type="email"
-          class="name-text"
-          placeholder="Savings app"
-          required
-        >
-        <button
-          class="hire-me"
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- </v-main> -->
+  <section
+    class="main-section"
+  >
+    <v-card
+      color="grey lighten-4"
+      dense
+      tile
+    >
+      <v-toolbar
+        dense
+      >
+        <v-toolbar-title class="toolbar-title">
+          Product
+        </v-toolbar-title>
+        <v-spacer />
+      </v-toolbar>
+    </v-card>
+    <!-- <v-main> -->
+    <nuxt />
+    <!-- </v-main> -->
+  </section>
 </template>
-
-<script>
-
-export default {
-  layout: 'pagewithtoolbar'
-}
-
-</script>
 
 <style scoped>
 .product-section{
