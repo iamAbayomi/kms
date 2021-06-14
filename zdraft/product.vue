@@ -3,8 +3,10 @@
     <!-- All user products -->
     <div class="all-products">
       <nuxt-link
+        v-for="item in product_group"
+        :key="item.product_id"
+        class="product-item"
         to="/notes"
-        class="text-link"
       >
         <p>
           Spiinge
