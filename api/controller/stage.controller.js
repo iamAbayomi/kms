@@ -9,7 +9,8 @@ exports.createStage = (req, res) => {
     stage_title: req.body.stage_title,
     stage_contents: req.body.stage_contents,
     stage_delta: req.body.stage_delta,
-    user_id: req.body.user_id
+    user_id: req.body.user_id,
+    product_id: req.body.product_id
   }
   Stage.create(stage)
     .then((data) => {
