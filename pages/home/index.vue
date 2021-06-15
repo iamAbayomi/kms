@@ -52,6 +52,7 @@
 /* eslint-disable no-console */
 export default {
   layout: 'pagewithtoolbar',
+  middleware: 'auth',
   data () {
     return {
       product_group: [
