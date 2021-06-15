@@ -2,30 +2,35 @@
   <div class="main-section">
     <!-- All user products -->
     <div class="all-products">
-      <nuxt-link
+      <div
         v-for="item in product_group"
         :key="item.product_id"
-        class="single-product text-link"
-        :to="'/productstage/' + item.product_id.toString()"
+        class="single-product"
       >
-        <div class="product-details">
-          <p>
-            {{ item.product_name }}
-          </p>
-          <p>
-            {{
-              new Date(item.updatedAt)
-                .toString('YYYY-MM-dd')
-            }}
-          </p>
-        </div>
-        <div class="product-options">
+        <nuxt-link
+          class="text-link"
+          :to="'/productstage/' + item.product_id.toString()"
+        >
+          <div class="product-details">
+            <p>
+              {{ item.product_name }}
+            </p>
+            <p>
+              {{
+                new Date(item.updatedAt)
+                  .toString('YYYY-MM-dd')
+              }}
+            </p>
+          </div>
+        </nuxt-link>
+        <div class="product-options hide">
           <v-tooltip bottom>
             <template #activator="{ on, attrs }">
               <v-btn icon>
                 <v-icon
                   v-bind="attrs"
                   v-on="on"
+                  @click="deleteSingleProduct"
                 >
                   mdi-trash-can
                 </v-icon>
@@ -35,7 +40,7 @@
           </v-tooltip>
         </div>
         <div class="horizontal-line" />
-      </nuxt-link>
+      </div>
 
       <div />
       <!-- End of user products declaration -->
