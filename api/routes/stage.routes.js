@@ -11,8 +11,6 @@ module.exports = (app) => {
   // Retrieve the all stages of one User
   router.get('/:user_id/:product_id', stages.findAllStage)
 
-  
-
   // Update Stages
   router.put('/:stage_id', stages.updateStage)
 
