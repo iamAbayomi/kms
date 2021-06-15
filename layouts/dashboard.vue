@@ -119,6 +119,7 @@
 
 <script>
 /* eslint-disable no-console */
+/* eslint-disable camelcase */
 export default {
   middleware: 'auth',
   data () {
@@ -152,7 +153,6 @@ export default {
   },
   created () {
     this.getStageId()
-    this.getText()
   },
   mounted () {
     this.getRoutePath()
@@ -165,33 +165,19 @@ export default {
       // eslint-disable-next-line no-unused-vars
       const [pageName, stageId] = path.split('/')
       this.product_id = stageId
-      // console.log('this is the stage title ' + this.stage_groupthis.stageId.stage_title)
-      //  this.routePath = pageName
-      // console.log('this is the path ' + path)
       console.log('this is the stage_id ' + this.product_id +
        ' this is the pagename  ' + pageName)
+      // Get The user stages
+      this.getText()
     },
     getRoutePath () {
       console.log('stage group ' + this.stage_group)
-      // let path = this.$route.path
-      // path = path.substring(1)
-      // const newPath = path.charAt(0).toUpperCase() + path.slice(1)
-      // this.routePath = newPath
-      // this.routePath = document.title
-      // console.log(document.title)
     },
     logOut () {
       this.$auth.logout()
       this.$router.push('/')
     },
     createStage () {
-      // this.tempData = {
-      //   stage_id: 2,
-      //   stage_title: this.input_field,
-      //   stage_content: this.input_field
-      // }
-      // // this.$set(this.categoriesCard, iterate, this.tempData)
-      // this.stage_group.push(this.tempData)
       this.createText()
       this.removeInputField()
     },
@@ -222,8 +208,11 @@ export default {
       this.$axios.get('/apis/stage/' + this.$auth.user.id + '/' + this.product_id)
         .then((response) => {
           this.stage_group = response.data
-          // this.textId = response.data.text_id
+          if (this.stage_group.length > 0) {
+            this.goToFirstStage(this.stage_group)
+          }
           this.savedStatus = response.status
+
           console.log(response)
         }).catch((err) => {
           console.log(err)
@@ -238,6 +227,9 @@ export default {
         }).catch((err) => {
           console.log(err)
         })
+    },
+    goToFirstStage (stage_group) {
+      this.$router.push(`/productstage/${this.product_id}/${stage_group[0].stage_id}`)
     },
     showMenuItem () {
       const element = document.getElementById('menu_item_title')
