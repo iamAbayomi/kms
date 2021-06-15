@@ -234,3 +234,7 @@ list-style: none;
   right: 40px;
   bottom:40px;
 }
+
+.hide{
+  display: none;
+}
