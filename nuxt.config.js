@@ -124,7 +124,7 @@ export default {
     redirect: {
       login: '/getstarted',
       logout: '/',
-      home: '/notes'
+      home: '/home'
     },
     plugins: [
       '~plugins/auth.js'
