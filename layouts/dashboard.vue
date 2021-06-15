@@ -11,40 +11,40 @@
       </nuxt-link>
       <!-- Begining of menu -->
       <div class="menu">
-        <!-- Group of Notes Title -->
+        <!-- Group of Product Title -->
         <div class="link-group">
           <nuxt-link
-            v-for="item in notes_group"
-            :key="item.notes_id"
+            v-for="item in product_group"
+            :key="item.product_id"
             class="menu-item"
-            :to="'/notes/'+item.notes_id.toString()"
+            :to="'/product/'+item.product_id.toString()"
             exact-active-class="menu-active"
           >
             <p
               id="menu_item_title"
               class="menu-text"
             >
-              {{ item.notes_title }}
+              {{ item.product_title }}
             </p>
             <!-- <input
               id="edit-input"
               v-model="edit_field"
               class="name-text hide"
-              placeholder="Edit notes title"
-              @keyup.enter="editNotes"
+              placeholder="Edit product title"
+              @keyup.enter="editProduct"
             > -->
           </nuxt-link>
         </div>
-        <!-- End of Notes Title -->
+        <!-- End of Product Title -->
         <input
           id="add-input"
           v-model="input_field"
           class="name-text hide"
-          placeholder="Add notes title"
-          @keyup.enter="createNotes"
+          placeholder="Add product title"
+          @keyup.enter="createProduct"
         >
         <!-- End of link -->
-        <!-- Button to add new Notes -->
+        <!-- Button to add new Product -->
         <div
           @click="showInputField"
         >
@@ -89,7 +89,7 @@
             <v-icon
               v-bind="attrs"
               v-on="on"
-              @click="deleteNotes"
+              @click="deleteProduct"
             >
               mdi-trash-can
             </v-icon>
@@ -125,16 +125,16 @@ export default {
     return {
       drawer: null,
       routePath: 'Product Stage',
-      notes_group: [
+      product_group: [
       ],
-      notes_group_1: [
+      product_group_1: [
         {
-          notes_id: 1,
-          notes_title: 'Hello',
-          notes_content: 'This is a content'
+          product_id: 1,
+          product_title: 'Hello',
+          product_content: 'This is a content'
         }
       ],
-      notes_id: '',
+      product_id: '',
       input_field: '',
       edit_field: '',
       tempData: []
@@ -154,25 +154,25 @@ export default {
     this.getText()
   },
   mounted () {
-    this.getNotesId()
+    this.getProductId()
     this.getRoutePath()
   },
   methods: {
-    getNotesId () {
+    getProductId () {
       // eslint-disable-next-line prefer-const
       let path = this.$route.path
       path = path.substring(1)
       // eslint-disable-next-line no-unused-vars
-      const [pageName, notesId] = path.split('/')
-      this.notes_id = notesId
-      // console.log('this is the notes title ' + this.notes_groupthis.notesId.notes_title)
+      const [pageName, productId] = path.split('/')
+      this.product_id = productId
+      // console.log('this is the product title ' + this.product_groupthis.productId.product_title)
     //  this.routePath = pageName
       // console.log('this is the path ' + path)
-      // console.log('this is the notes_id ' + notesId +
+      // console.log('this is the product_id ' + productId +
       //  ' this is the pagename  ' + pageName)
     },
     getRoutePath () {
-      console.log('notes group ' + this.notes_group)
+      console.log('product group ' + this.product_group)
       // let path = this.$route.path
       // path = path.substring(1)
       // const newPath = path.charAt(0).toUpperCase() + path.slice(1)
@@ -184,24 +184,24 @@ export default {
       this.$auth.logout()
       this.$router.push('/')
     },
-    createNotes () {
+    createProduct () {
       // this.tempData = {
-      //   notes_id: 2,
-      //   notes_title: this.input_field,
-      //   notes_content: this.input_field
+      //   product_id: 2,
+      //   product_title: this.input_field,
+      //   product_content: this.input_field
       // }
       // // this.$set(this.categoriesCard, iterate, this.tempData)
-      // this.notes_group.push(this.tempData)
+      // this.product_group.push(this.tempData)
       this.createText()
       this.removeInputField()
     },
     // Method to create text
     createText () {
       // send the request to apis to create the text
-      this.$axios.post('/apis/notes/', {
-        notes_title: this.input_field,
-        notes_contents: '',
-        notes_delta: '',
+      this.$axios.post('/apis/product/', {
+        product_title: this.input_field,
+        product_contents: '',
+        product_delta: '',
         user_id: this.$auth.user.id
       })
         .then((response) => {
@@ -218,9 +218,9 @@ export default {
       this.$router.push('/home')
     },
     getText () {
-      this.$axios.get('/apis/notes/' + this.$auth.user.id)
+      this.$axios.get('/apis/product/' + this.$auth.user.id)
         .then((response) => {
-          this.notes_group = response.data
+          this.product_group = response.data
           // this.textId = response.data.text_id
           this.savedStatus = response.status
           console.log(response)
@@ -228,10 +228,10 @@ export default {
           console.log(err)
         })
     },
-    deleteNotes () {
-      this.$axios.delete('/apis/notes/' + this.notes_id)
+    deleteProduct () {
+      this.$axios.delete('/apis/product/' + this.product_id)
         .then((response) => {
-          this.getNotesId()
+          this.getProductId()
           console.log(response)
           this.getText()
         }).catch((err) => {
@@ -258,9 +258,9 @@ export default {
       element.classList.add('hide')
       this.showMenuItem()
     },
-    editNotes () {
-      console.log(this.notes_group[0].notes_title)
-      this.notes_group[0].notes_title = this.edit_field
+    editProduct () {
+      console.log(this.product_group[0].product_title)
+      this.product_group[0].product_title = this.edit_field
       this.removeEditField()
     },
     showInputField () {
