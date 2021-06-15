@@ -34,7 +34,8 @@ export default {
   layout: 'pagewithtoolbar',
   data () {
     return {
-      product_name: ''
+      product_name: '',
+      product_id: ''
     }
   },
   methods: {
@@ -45,7 +46,8 @@ export default {
       })
         .then((response) => {
           console.log(response)
-          this.$router.push('/productstage')
+          this.product_id = response.data.product_id
+          this.$router.push(`/productstage/${this.product_id}`)
         })
         .catch((error) => {
           console.log(error)
