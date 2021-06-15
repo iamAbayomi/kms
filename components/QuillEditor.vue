@@ -18,30 +18,30 @@ if (process.client) {
 export default {
   data () {
     return {
-      notes_group: {
-        notes_id: '',
-        notes_title: '',
-        notes_contents: '',
-        notes_delta: ''
+      stage_group: {
+        stage_id: '',
+        stage_title: '',
+        stage_contents: '',
+        stage_delta: ''
       },
       pageName: ' ',
       saved_status: true
     }
   },
   mounted () {
-    this.getNotesId()
+    this.getStageId()
     this.createQuillEditor()
   },
   methods: {
-    getNotesId () {
+    getStageId () {
       // eslint-disable-next-line prefer-const
       let path = this.$route.path
       path = path.substring(1)
       // eslint-disable-next-line no-unused-vars
-      const [pageName, notesId] = path.split('/')
-      this.notes_group.notes_id = notesId
+      const [pageName, stageId] = path.split('/')
+      this.stage_group.stage_id = stageId
       // console.log('this is the path ' + path)
-      // console.log('this is the notes_id ' + notesId +
+      // console.log('this is the stage_id ' + stageId +
       //  ' this is the pagename  ' + pageName)
     },
     // Set the toolbar Options
@@ -73,31 +73,31 @@ export default {
           console.log('An API call triggered this change.')
         } else if (source === 'user') {
           console.log('A user action triggered this change.')
-          thiss.notes_group.notes_delta = JSON.stringify(quill.getContents())
-          thiss.notes_group.notes_contents = quill.getText()
-          console.log(thiss.notes_group.notes_delta)
+          thiss.stage_group.stage_delta = JSON.stringify(quill.getContents())
+          thiss.stage_group.stage_contents = quill.getText()
+          console.log(thiss.stage_group.stage_delta)
           // eslint-disable-next-line no-unused-expressions
           thiss.saveText()
         }
       })
     },
-    // Get the notes of the user.
+    // Get the stage of the user.
     getText (quill) {
-      this.$axios.get('/apis/notes/usernotes/' + this.notes_group.notes_id)
+      this.$axios.get('/apis/stage/userstage/' + this.stage_group.stage_id)
         .then((response) => {
-          this.notes_group = response.data
-          console.log(response.data.notes_delta)
-          quill.setContents(JSON.parse(response.data.notes_delta))
+          this.stage_group = response.data
+          console.log(response.data.stage_delta)
+          quill.setContents(JSON.parse(response.data.stage_delta))
         }).catch((err) => {
           console.log(err)
         })
     },
-    // Update the user notes.
+    // Update the user stage.
     updateText () {
-      this.$axios.put('/apis/notes/' + this.notes_group.notes_id, {
-        notes_title: this.notes_group.notes_title,
-        notes_contents: this.notes_group.notes_contents,
-        notes_delta: this.notes_group.notes_delta
+      this.$axios.put('/apis/stage/' + this.stage_group.stage_id, {
+        stage_title: this.stage_group.stage_title,
+        stage_contents: this.stage_group.stage_contents,
+        stage_delta: this.stage_group.stage_delta
       })
         .then((response) => {
           console.log(response)
