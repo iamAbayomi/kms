@@ -22,7 +22,7 @@
                 With Spiinge you can create many products and track the product development stage.
               </p>
               <div class="home-button-container">
-                <a href="/notes">
+                <a href="/productstage">
                   <button class="hire-me">
                     Sign Up
                   </button>

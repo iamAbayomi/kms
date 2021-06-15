@@ -49,10 +49,10 @@ export default {
   layout: 'pagewithtoolbar',
   data () {
     return {
-      product_group1: [
+      product_group: [
 
       ],
-      product_group: [
+      product_group1: [
         {
           product_id: 1,
           product_name: 'Spiinge',
