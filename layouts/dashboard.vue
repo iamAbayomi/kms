@@ -74,6 +74,21 @@
             <v-icon
               v-bind="attrs"
               v-on="on"
+              @click="goHome"
+            >
+              mdi-home
+            </v-icon>
+          </v-btn>
+        </template>
+        <span>Home</span>
+      </v-tooltip>
+
+      <v-tooltip bottom>
+        <template #activator="{ on, attrs }">
+          <v-btn icon>
+            <v-icon
+              v-bind="attrs"
+              v-on="on"
               @click="deleteNotes"
             >
               mdi-trash-can
@@ -109,7 +124,7 @@ export default {
   data () {
     return {
       drawer: null,
-      routePath: '',
+      routePath: 'Product Stage',
       notes_group: [
       ],
       notes_group_1: [
@@ -127,7 +142,7 @@ export default {
   },
   head () {
     return {
-      title: 'Spiinge | Notes'
+      title: 'Spiinge | Product Stage'
     }
   },
   watch: {
@@ -151,7 +166,7 @@ export default {
       const [pageName, notesId] = path.split('/')
       this.notes_id = notesId
       // console.log('this is the notes title ' + this.notes_groupthis.notesId.notes_title)
-      this.routePath = pageName
+    //  this.routePath = pageName
       // console.log('this is the path ' + path)
       // console.log('this is the notes_id ' + notesId +
       //  ' this is the pagename  ' + pageName)
@@ -198,6 +213,9 @@ export default {
         .catch((error) => {
           console.log(error)
         })
+    },
+    goHome () {
+      this.$router.push('/allnewproducts')
     },
     getText () {
       this.$axios.get('/apis/notes/' + this.$auth.user.id)
