@@ -11,40 +11,40 @@
       </nuxt-link>
       <!-- Begining of menu -->
       <div class="menu">
-        <!-- Group of Product Title -->
+        <!-- Group of Stage Title -->
         <div class="link-group">
           <nuxt-link
-            v-for="item in product_group"
-            :key="item.product_id"
+            v-for="item in stage_group"
+            :key="item.stage_id"
             class="menu-item"
-            :to="'/product/'+item.product_id.toString()"
+            :to="'/productstage/' + product_id + '/' +item.stage_id.toString()"
             exact-active-class="menu-active"
           >
             <p
               id="menu_item_title"
               class="menu-text"
             >
-              {{ item.product_title }}
+              {{ item.stage_title }}
             </p>
             <!-- <input
               id="edit-input"
               v-model="edit_field"
               class="name-text hide"
-              placeholder="Edit product title"
-              @keyup.enter="editProduct"
+              placeholder="Edit stage title"
+              @keyup.enter="editStage"
             > -->
           </nuxt-link>
         </div>
-        <!-- End of Product Title -->
+        <!-- End of Stage Title -->
         <input
           id="add-input"
           v-model="input_field"
           class="name-text hide"
-          placeholder="Add product title"
-          @keyup.enter="createProduct"
+          placeholder="Add stage title"
+          @keyup.enter="createStage"
         >
         <!-- End of link -->
-        <!-- Button to add new Product -->
+        <!-- Button to add new Stage -->
         <div
           @click="showInputField"
         >
@@ -89,7 +89,7 @@
             <v-icon
               v-bind="attrs"
               v-on="on"
-              @click="deleteProduct"
+              @click="deleteStage"
             >
               mdi-trash-can
             </v-icon>
@@ -125,13 +125,13 @@ export default {
     return {
       drawer: null,
       routePath: 'Product Stage',
-      product_group: [
+      stage_group: [
       ],
-      product_group_1: [
+      stage_group_1: [
         {
-          product_id: 1,
-          product_title: 'Hello',
-          product_content: 'This is a content'
+          stage_id: 1,
+          stage_title: 'Hello',
+          stage_content: 'This is a content'
         }
       ],
       product_id: '',
@@ -151,28 +151,28 @@ export default {
     }
   },
   created () {
+    this.getStageId()
     this.getText()
   },
   mounted () {
-    this.getProductId()
     this.getRoutePath()
   },
   methods: {
-    getProductId () {
+    getStageId () {
       // eslint-disable-next-line prefer-const
       let path = this.$route.path
       path = path.substring(1)
       // eslint-disable-next-line no-unused-vars
-      const [pageName, productId] = path.split('/')
-      this.product_id = productId
-      // console.log('this is the product title ' + this.product_groupthis.productId.product_title)
-    //  this.routePath = pageName
+      const [pageName, stageId] = path.split('/')
+      this.product_id = stageId
+      // console.log('this is the stage title ' + this.stage_groupthis.stageId.stage_title)
+      //  this.routePath = pageName
       // console.log('this is the path ' + path)
-      // console.log('this is the product_id ' + productId +
-      //  ' this is the pagename  ' + pageName)
+      console.log('this is the stage_id ' + this.product_id +
+       ' this is the pagename  ' + pageName)
     },
     getRoutePath () {
-      console.log('product group ' + this.product_group)
+      console.log('stage group ' + this.stage_group)
       // let path = this.$route.path
       // path = path.substring(1)
       // const newPath = path.charAt(0).toUpperCase() + path.slice(1)
@@ -184,24 +184,25 @@ export default {
       this.$auth.logout()
       this.$router.push('/')
     },
-    createProduct () {
+    createStage () {
       // this.tempData = {
-      //   product_id: 2,
-      //   product_title: this.input_field,
-      //   product_content: this.input_field
+      //   stage_id: 2,
+      //   stage_title: this.input_field,
+      //   stage_content: this.input_field
       // }
       // // this.$set(this.categoriesCard, iterate, this.tempData)
-      // this.product_group.push(this.tempData)
+      // this.stage_group.push(this.tempData)
       this.createText()
       this.removeInputField()
     },
     // Method to create text
     createText () {
       // send the request to apis to create the text
-      this.$axios.post('/apis/product/', {
-        product_title: this.input_field,
-        product_contents: '',
-        product_delta: '',
+      this.$axios.post('/apis/stage/', {
+        stage_title: this.input_field,
+        stage_contents: '',
+        stage_delta: '',
+        product_id: this.product_id,
         user_id: this.$auth.user.id
       })
         .then((response) => {
@@ -218,9 +219,9 @@ export default {
       this.$router.push('/home')
     },
     getText () {
-      this.$axios.get('/apis/product/' + this.$auth.user.id)
+      this.$axios.get('/apis/stage/' + this.$auth.user.id + '/' + this.product_id)
         .then((response) => {
-          this.product_group = response.data
+          this.stage_group = response.data
           // this.textId = response.data.text_id
           this.savedStatus = response.status
           console.log(response)
@@ -228,10 +229,10 @@ export default {
           console.log(err)
         })
     },
-    deleteProduct () {
-      this.$axios.delete('/apis/product/' + this.product_id)
+    deleteStage () {
+      this.$axios.delete('/apis/stage/' + this.stage_id)
         .then((response) => {
-          this.getProductId()
+          this.getStageId()
           console.log(response)
           this.getText()
         }).catch((err) => {
@@ -258,9 +259,9 @@ export default {
       element.classList.add('hide')
       this.showMenuItem()
     },
-    editProduct () {
-      console.log(this.product_group[0].product_title)
-      this.product_group[0].product_title = this.edit_field
+    editStage () {
+      console.log(this.stage_group[0].stage_title)
+      this.stage_group[0].stage_title = this.edit_field
       this.removeEditField()
     },
     showInputField () {

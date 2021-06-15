@@ -6,7 +6,7 @@ module.exports = (app) => {
   router.post('/', stages.createStage)
 
   // Retrieve the all stages of one User
-  router.get('/:user_id', stages.findAllStage)
+  router.get('/:user_id/:product_id', stages.findAllStage)
 
   // Retrieve one stage for one user
   router.get('/userstages/:stage_id', stages.findSingleStage)
@@ -17,5 +17,5 @@ module.exports = (app) => {
   // Delete Stages
   router.delete('/:stage_id', stages.deleteStage)
 
-  app.use('/apis/stages', router)
+  app.use('/apis/stage', router)
 }

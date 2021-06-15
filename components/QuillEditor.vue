@@ -24,12 +24,15 @@ export default {
         stage_contents: '',
         stage_delta: ''
       },
+      stage_Id: '',
       pageName: ' ',
       saved_status: true
     }
   },
-  mounted () {
+  created () {
     this.getStageId()
+  },
+  mounted () {
     this.createQuillEditor()
   },
   methods: {
@@ -38,11 +41,13 @@ export default {
       let path = this.$route.path
       path = path.substring(1)
       // eslint-disable-next-line no-unused-vars
-      const [pageName, stageId] = path.split('/')
-      this.stage_group.stage_id = stageId
+      const [pageName, id, stageId] = path.split('/')
+      // this.stage_group.stage_id = stageId
+      this.stage_id = stageId
       // console.log('this is the path ' + path)
-      // console.log('this is the stage_id ' + stageId +
-      //  ' this is the pagename  ' + pageName)
+      console.log(this.stage_group.stage_id)
+      console.log('this is the stage_id ' + stageId +
+       ' this is the pagename  ' + id)
     },
     // Set the toolbar Options
     setToolbarOptions () {
@@ -83,10 +88,10 @@ export default {
     },
     // Get the stage of the user.
     getText (quill) {
-      this.$axios.get('/apis/stage/userstage/' + this.stage_group.stage_id)
+      this.$axios.get('/apis/stage/userstage/' + this.stage_id)
         .then((response) => {
           this.stage_group = response.data
-          console.log(response.data.stage_delta)
+          console.log(response)
           quill.setContents(JSON.parse(response.data.stage_delta))
         }).catch((err) => {
           console.log(err)
@@ -94,13 +99,15 @@ export default {
     },
     // Update the user stage.
     updateText () {
-      this.$axios.put('/apis/stage/' + this.stage_group.stage_id, {
+      console.log(this.stage_group.stage_id)
+      this.$axios.put('/apis/stage/' + this.stage_id, {
         stage_title: this.stage_group.stage_title,
         stage_contents: this.stage_group.stage_contents,
         stage_delta: this.stage_group.stage_delta
       })
         .then((response) => {
           console.log(response)
+
           // console.log('Here is quill contents')
           // console.log(this.quillContents)
           this.savedStatus = response.status

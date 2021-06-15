@@ -27,10 +27,12 @@ exports.createStage = (req, res) => {
 // Retreve all Stage belonging to User from the database
 exports.findAllStage = (req, res) => {
   const user_id = req.params.user_id
+  const product_id = req.params.product_id
   Stage.findAll(
     {
       where: {
-        user_id
+        user_id,
+        product_id
       }
     }
   )
