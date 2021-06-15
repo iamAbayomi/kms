@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 // Initializing Database
 const db = require('./models')
-// db.sequelize.sync({ alter: true })
+db.sequelize.sync({ alter: true })
 
 // use cors
 // require('./utilities/cors')(app)
