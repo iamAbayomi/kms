@@ -95,6 +95,9 @@ export default {
       this.$router.push('/newproduct')
     },
     getAllProducts () {
+      if (this.$auth.user.id === undefined) {
+        // this.$router.go('/home')
+      }
       this.$axios.get('/apis/product/' + this.$auth.user.id)
         .then((response) => {
           this.product_group = response.data
