@@ -10,6 +10,7 @@
           Product Name
         </p>
         <input
+          v-model="product_name"
           type="email"
           class="name-text"
           placeholder="Savings app"
@@ -17,6 +18,7 @@
         >
         <button
           class="hire-me"
+          @click="createProduct"
         >
           Next
         </button>
@@ -27,9 +29,29 @@
 </template>
 
 <script>
-
+/* eslint-disable no-console */
 export default {
-  layout: 'pagewithtoolbar'
+  layout: 'pagewithtoolbar',
+  data () {
+    return {
+      product_name: ''
+    }
+  },
+  methods: {
+    createProduct () {
+      this.$axios.post('/apis/product/', {
+        product_name: this.product_name,
+        user_id: this.$auth.user.id
+      })
+        .then((response) => {
+          console.log(response)
+          this.$router.push('/notes')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }
 }
 
 </script>
