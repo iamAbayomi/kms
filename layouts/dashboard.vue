@@ -215,7 +215,7 @@ export default {
         })
     },
     goHome () {
-      this.$router.push('/allnewproducts')
+      this.$router.push('/home')
     },
     getText () {
       this.$axios.get('/apis/notes/' + this.$auth.user.id)

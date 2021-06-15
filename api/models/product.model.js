@@ -8,7 +8,8 @@ module.exports = (sequlize, Sequelize) => {
       primaryKey: true
     },
     product_name: {
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+      notEmpty: true
     }
 
   })

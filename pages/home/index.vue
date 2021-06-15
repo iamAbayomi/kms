@@ -6,13 +6,18 @@
         v-for="item in product_group"
         :key="item.product_id"
         class="single-product text-link"
-        to="/notes"
+        :to="'/productstage/' + item.product_id.toString()"
       >
         <div class="product-details">
           <p>
             {{ item.product_name }}
           </p>
-          <p>{{ item.product_date }}</p>
+          <p>
+            {{
+              new Date(item.updatedAt)
+                .toString('YYYY-MM-dd')
+            }}
+          </p>
         </div>
         <div class="product-options">
           <v-tooltip bottom>
@@ -36,7 +41,7 @@
       <!-- End of user products declaration -->
       <!-- Button to add new Notes -->
       <div class="add-newbutton">
-        <img class="button-logo" src="~/assets/vectors/blue_plus.svg">
+        <img class="button-logo" src="~/assets/vectors/blue_plus.svg" @click="createProduct">
       </div>
     <!-- End of button declaration -->
     </div>
@@ -76,11 +81,17 @@ export default {
       ]
     }
   },
+  mounted () {
+    this.getAllProducts()
+  },
   methods: {
+    createProduct () {
+      this.$router.push('/newproduct')
+    },
     getAllProducts () {
       this.$axios.get('/apis/product/' + this.$auth.user.id)
         .then((response) => {
-          this.notes_group = response.data
+          this.product_group = response.data
           // this.textId = response.data.text_id
           this.savedStatus = response.status
           console.log(response)
