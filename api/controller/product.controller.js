@@ -85,7 +85,7 @@ exports.updateProduct = (req, res) => {
   })
 }
 
-exports.deleteNote = (req, res) => {
+exports.deleteProduct = (req, res) => {
   const product_id = req.params.product_id
 
   Product.destroy({

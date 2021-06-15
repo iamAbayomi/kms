@@ -88,7 +88,7 @@ exports.updateStage = (req, res) => {
   })
 }
 
-exports.deleteNote = (req, res) => {
+exports.deleteStage = (req, res) => {
   const stage_id = req.params.stage_id
 
   Stage.destroy({

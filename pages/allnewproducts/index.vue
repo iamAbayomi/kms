@@ -44,6 +44,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 export default {
   layout: 'pagewithtoolbar',
   data () {
@@ -73,6 +74,29 @@ export default {
           product_date: '22-08-21'
         }
       ]
+    }
+  },
+  methods: {
+    getAllProducts () {
+      this.$axios.get('/apis/product/' + this.$auth.user.id)
+        .then((response) => {
+          this.notes_group = response.data
+          // this.textId = response.data.text_id
+          this.savedStatus = response.status
+          console.log(response)
+        }).catch((err) => {
+          console.log(err)
+        })
+    },
+    deleteSingleProduct () {
+      this.$axios.delete('/apis/product/' + this.product_group.product_id)
+        .then((response) => {
+          this.getNotesId()
+          console.log(response)
+          this.getText()
+        }).catch((err) => {
+          console.log(err)
+        })
     }
   }
 }
