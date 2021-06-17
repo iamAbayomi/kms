@@ -8,7 +8,17 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@spiinge' },
+      { name: 'twitter:creator', content: '@oladinifolawiyo' },
+      { name: 'twitter:title', content: 'Spiinge' },
+      {
+        name: 'twitter:description',
+        content: 'Spiinge is a web application that allows you' +
+        'to manage your product ideas and track the product development stage.'
+      },
+      { name: 'twitter:image', content: '/home.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
