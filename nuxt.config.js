@@ -21,7 +21,7 @@ export default {
       { name: 'twitter:image', content: '/home.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '~/assets/images/favicon.png' }
     ]
   },
 
