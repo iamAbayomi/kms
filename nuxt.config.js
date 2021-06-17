@@ -15,8 +15,8 @@ export default {
       { name: 'twitter:title', content: 'Spiinge' },
       {
         name: 'twitter:description',
-        content: 'Spiinge is a web application that allows you' +
-        'to manage your product ideas and track the product development stage.'
+        content: 'Spiinge allows you' +
+        ' manage product ideas and track product development stage.'
       },
       { name: 'twitter:image', content: 'https://raw.githubusercontent.com/iamAbayomi/kms/master/assets/images/github-logo.png' }
     ],
