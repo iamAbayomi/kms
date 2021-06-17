@@ -18,7 +18,7 @@ export default {
         content: 'Spiinge is a web application that allows you' +
         'to manage your product ideas and track the product development stage.'
       },
-      { name: 'twitter:image', content: '~/assets/images/home.png' }
+      { name: 'twitter:image', content: 'https://raw.githubusercontent.com/iamAbayomi/kms/master/assets/images/github-logo.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
