@@ -18,10 +18,10 @@ export default {
         content: 'Spiinge is a web application that allows you' +
         'to manage your product ideas and track the product development stage.'
       },
-      { name: 'twitter:image', content: '/home.png' }
+      { name: 'twitter:image', content: '~/assets/images/home.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '~/assets/images/favicon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
     ]
   },
 
