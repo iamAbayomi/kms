@@ -90,10 +90,10 @@ export default {
   googleAnalytics: {
     id: process.env.GOOGLE_ANALYTICS_ID, // Used as fallback if no runtime config is provided
     debug: {
-      // enabled: true,
-      // sendHitTask: true
-      enabled: false,
-      sendHitTask: false
+      enabled: true,
+      sendHitTask: true
+      // enabled: false,
+      // sendHitTask: false
     }
   },
 
@@ -148,7 +148,11 @@ export default {
     axios: {
       baseURL: process.env.NODE_ENV === 'production' ? 'https://www.spiinge.com/' : 'http://localhost:3000'
     },
-    baseURL: process.env.NODE_ENV === 'production' ? 'https://www.spiinge.com/' : 'http://localhost:3000'
+    baseURL: process.env.NODE_ENV === 'production' ? 'https://www.spiinge.com/' : 'http://localhost:3000',
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID
+    }
+
   },
   privateRuntimeConfig: {
 
