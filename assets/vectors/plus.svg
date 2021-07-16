@@ -1,3 +1,6 @@
-<svg id="_" data-name="+" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-  <path id="Union_1" data-name="Union 1" d="M7.875,18V10.125H0V7.875H7.875V0h2.251V7.875H18v2.25H10.126V18Z" fill="#707070"/>
+<svg id="_" data-name="+" xmlns="http://www.w3.org/2000/svg" 
+width="18" height="18" viewBox="0 0 18 18">
+  <path id="Union_1" data-name="Union 1"
+   d="M7.875,18V10.125H0V7.875H7.875V0h2.251V7.875H18v2.25H10.126V18Z" 
+   fill="#1654B0"/>
 </svg>
