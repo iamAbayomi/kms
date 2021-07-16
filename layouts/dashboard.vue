@@ -70,7 +70,7 @@
       </v-toolbar-title>
       <v-spacer />
 
-      <!-- <v-tooltip bottom>
+      <v-tooltip bottom>
         <template #activator="{ on, attrs }">
           <v-btn icon>
             <v-icon
@@ -85,7 +85,7 @@
         <span>Home</span>
       </v-tooltip>
 
-      <v-tooltip bottom>
+      <!-- <v-tooltip bottom>
         <template #activator="{ on, attrs }">
           <v-btn icon>
             <v-icon
