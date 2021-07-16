@@ -59,7 +59,9 @@
       dense
       app
     >
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
+      <v-app-bar-nav-icon
+        @click="drawer = !drawer"
+      />
 
       <v-toolbar-title
         class="toolbar-title"
@@ -303,6 +305,13 @@ body{
 .header-bar{
   /* background-color: white; */
   background-color: #ffffff;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+
+}
+
+.v-sheet.v-app-bar.v-toolbar:not(.v-sheet--outlined) {
+    /* box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); */
+     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 /* Position and style the close button (top right corner) */
@@ -347,7 +356,7 @@ body{
 }
 
 .v-btn > .v-btn__content .v-icon {
-    color: #032E6E;
+    color: #1654B0;
 
 }
 
@@ -360,6 +369,10 @@ body{
     margin-top: 8px;
     margin-bottom: 22px ;
     /* background-color: #F4F8FC; */
+}
+
+.toolbar-title{
+  font-family: Helvetica;
 }
 
 .theme--light.v-sheet {
