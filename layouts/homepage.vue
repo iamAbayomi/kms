@@ -56,11 +56,13 @@ html {
     font-size: 100%;
     margin: 0px;
     padding: 0px;
+    overflow-y: hidden;
   }
 
 body{
     background-color: white;
-    /* height: 100%; */
+    height: 100%;
+    overflow-y: hidden;
     margin: 0px;
     padding: 0px;
     font-size: 16px;
@@ -203,7 +205,7 @@ body{
     border-radius: 4px;
     border-style: solid;
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(32, 29, 29, 0.2);
     transition: 0.3s;
 }
 
