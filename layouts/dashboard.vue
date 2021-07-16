@@ -70,7 +70,7 @@
       </v-toolbar-title>
       <v-spacer />
 
-      <v-tooltip bottom>
+      <!-- <v-tooltip bottom>
         <template #activator="{ on, attrs }">
           <v-btn icon>
             <v-icon
@@ -98,7 +98,8 @@
           </v-btn>
         </template>
         <span>Delete</span>
-      </v-tooltip>
+      </v-tooltip> -->
+
       <v-tooltip bottom>
         <template #activator="{ on, attrs }">
           <v-btn icon>
@@ -439,9 +440,9 @@ body{
 }
 
 .button-logo{
-    height: 40px;
+    height: 35px;
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
     right: 30px;
 }
 
