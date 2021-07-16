@@ -2,6 +2,12 @@
   <div id="contain" class="container">
     <!-- Create the editor container -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <div id="toolbar">
+      <button class="ql-bold" />
+      <button class="ql-italic" />
+      <button class="ql-underline" />
+    </div>
+
     <div
       id="editor"
     />
@@ -51,13 +57,13 @@ export default {
     },
     // Set the toolbar Options
     setToolbarOptions () {
-      const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
+      // const toolbarOptions = ['bold', 'italic', 'underline', 'strike']
       return {
         debug: 'false',
         placeholder: 'What do you want to build',
         readOnly: false,
         modules: {
-          toolbar: toolbarOptions
+          toolbar: '#toolbar'
         },
         theme: 'snow'
       }
@@ -167,4 +173,10 @@ export default {
     background: #FFFFFF;
     color: #103C7E;
 }
+
+.v-application p {
+    margin-bottom: 16px;
+    font-family: sans-serif;
+}
+
 </style>
