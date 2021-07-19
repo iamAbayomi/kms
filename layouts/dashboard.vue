@@ -23,9 +23,9 @@
             exact-active-class="menu-active"
           >
             <p
-              id="menu_item_title"
+              :id="'menu_item_title ' + item.stage_id"
               class="menu-text"
-              @click="removeMenuItem"
+              @click="showMenuLinkId(item.stage_id)"
             >
               {{ item.stage_title }}
             </p>
@@ -269,6 +269,9 @@ export default {
     removeInputField () {
       const element = document.getElementById('add-input')
       element.classList.add('hide')
+    },
+    showMenuLinkId (product_id) {
+      console.log('Hello I am here ' + product_id)
     }
   }
 
