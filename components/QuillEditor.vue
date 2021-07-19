@@ -146,6 +146,7 @@ export default {
 <style scoped>
 .container{
   margin: 0px 10px 0px 0px;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .ql-container.ql-snow {
@@ -153,6 +154,7 @@ export default {
 }
 .ql-container {
   font-size: 16px;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .ql-snow .ql-stroke {
@@ -161,6 +163,11 @@ export default {
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 2;
+}
+
+.ql-editor p{
+  font-family: 'Fira Sans', sans-serif;
+
 }
 
 .ql-toolbar {
