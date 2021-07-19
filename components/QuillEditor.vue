@@ -6,6 +6,9 @@
       <button class="ql-bold" />
       <button class="ql-italic" />
       <button class="ql-underline" />
+      <button class="delete-button">
+        <img src="~/assets/vectors/delete.svg">
+      </button>
     </div>
 
     <div
@@ -184,6 +187,12 @@ export default {
 .v-application p {
     margin-bottom: 16px;
     font-family: sans-serif;
+}
+
+.delete-button img{
+  height: 14px;
+  margin: 0px 0px 2px 0px;
+  float: right;
 }
 
 </style>
