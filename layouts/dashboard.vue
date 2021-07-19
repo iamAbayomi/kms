@@ -145,7 +145,8 @@ export default {
       product_id: '',
       input_field: '',
       edit_field: '',
-      tempData: []
+      tempData: [],
+      tempStage_id: ''
     }
   },
   head () {
@@ -201,7 +202,8 @@ export default {
         .then((response) => {
           console.log(response)
           this.savedStatus = response.status
-          this.getText('0', 'firstpage')
+          this.tempStage_id = response.data.stage_id
+          this.getText(this.tempStage_id, 'currentStage')
           // console.log(this.textId)
         })
         .catch((error) => {
