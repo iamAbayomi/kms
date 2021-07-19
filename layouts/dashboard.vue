@@ -25,16 +25,17 @@
             <p
               id="menu_item_title"
               class="menu-text"
+              @click="removeMenuItem"
             >
               {{ item.stage_title }}
             </p>
-            <!-- <input
+            <input
               id="edit-input"
               v-model="edit_field"
               class="name-text hide"
               placeholder="Edit stage title"
               @keyup.enter="editStage"
-            > -->
+            >
           </nuxt-link>
         </div>
         <!-- End of Stage Title -->
