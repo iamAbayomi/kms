@@ -5,6 +5,8 @@
       v-model="drawer"
       app
     >
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
       <!-- Header Logo -->
       <nuxt-link to="/">
         <img class="header-logo" src="~/assets/images/spiinge-web-logo.svg">
