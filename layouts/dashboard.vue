@@ -21,20 +21,21 @@
             class="menu-item"
             :to="'/productstage/' + product_id + '/' +item.stage_id.toString()"
             exact-active-class="menu-active"
+            @dblclick.native="removeMenuItem(item.stage_id)"
           >
             <p
               :id="'menu_item_title ' + item.stage_id"
               class="menu-text"
-              @click="showMenuLinkId(item.stage_id)"
             >
               {{ item.stage_title }}
             </p>
             <input
-              id="edit-input"
+              :id="'edit-input ' + item.stage_id"
               v-model="edit_field"
               class="name-text hide"
               placeholder="Edit stage title"
-              @keyup.enter="editStage"
+              @blur="removeEditField(item.stage_id)"
+              @keyup.enter="editStage(item.stage_id, item)"
             >
           </nuxt-link>
         </div>
@@ -174,7 +175,7 @@ export default {
       console.log('this is the stage_id ' + this.product_id +
        ' this is the pagename  ' + pageName)
       // Get The user stages
-      this.getText()
+      this.getText('0', 'firstpage')
     },
     getRoutePath () {
       console.log('stage group ' + this.stage_group)
@@ -200,7 +201,7 @@ export default {
         .then((response) => {
           console.log(response)
           this.savedStatus = response.status
-          this.getText()
+          this.getText('0', 'firstpage')
           // console.log(this.textId)
         })
         .catch((error) => {
@@ -210,12 +211,14 @@ export default {
     goHome () {
       this.$router.push('/home')
     },
-    getText () {
+    getText (stage_id, direction) {
       this.$axios.get('/apis/stage/' + this.$auth.user.id + '/' + this.product_id)
         .then((response) => {
           this.stage_group = response.data
-          if (this.stage_group.length > 0) {
+          if (this.stage_group.length > 0 && direction === 'firstpage') {
             this.goToFirstStage(this.stage_group)
+          } else {
+            this.goToCurrentStage(stage_id)
           }
           this.savedStatus = response.status
 
@@ -229,7 +232,7 @@ export default {
         .then((response) => {
           this.getStageId()
           console.log(response)
-          this.getText()
+          this.getText('0', 'firststage')
         }).catch((err) => {
           console.log(err)
         })
@@ -237,30 +240,35 @@ export default {
     goToFirstStage (stage_group) {
       this.$router.push(`/productstage/${this.product_id}/${stage_group[0].stage_id}`)
     },
-    showMenuItem () {
-      const element = document.getElementById('menu_item_title')
+    goToCurrentStage (stage_id) {
+      this.$router.push(`/productstage/${this.product_id}/${stage_id}`)
+    },
+    showMenuItem (stage_id) {
+      const element = document.getElementById('menu_item_title ' + stage_id)
       element.classList.remove('hide')
     },
-    removeMenuItem () {
+    removeMenuItem (stage_id) {
       console.log('removeMenuItem')
-      this.showEditField()
-      const element = document.getElementById('menu_item_title')
+      this.showEditField(stage_id)
+      const element = document.getElementById('menu_item_title ' + stage_id)
       element.classList.add('hide')
     },
-    showEditField () {
-      const element = document.getElementById('edit-input')
+    showEditField (stage_id) {
+      this.edit_field = ''
+      const element = document.getElementById('edit-input ' + stage_id)
       element.classList.remove('hide')
-      this.showMenuItem()
+      this.showMenuItem(stage_id)
     },
-    removeEditField () {
-      const element = document.getElementById('edit-input')
+    removeEditField (stage_id) {
+      const element = document.getElementById('edit-input ' + stage_id)
       element.classList.add('hide')
-      this.showMenuItem()
+      this.showMenuItem(stage_id)
     },
-    editStage () {
+    editStage (stage_id, item) {
       console.log(this.stage_group[0].stage_title)
-      this.stage_group[0].stage_title = this.edit_field
-      this.removeEditField()
+      // this.stage_group[0].stage_title = this.edit_field
+      this.updateText(stage_id)
+      this.removeEditField(stage_id)
     },
     showInputField () {
       const element = document.getElementById('add-input')
@@ -272,6 +280,21 @@ export default {
     },
     showMenuLinkId (product_id) {
       console.log('Hello I am here ' + product_id)
+    },
+    updateText (stage_id) {
+      console.log(stage_id)
+      this.$axios.put('/apis/stage/' + stage_id, {
+        stage_title: this.edit_field
+      })
+        .then((response) => {
+          console.log(response)
+          // this.getText()
+          this.getText(stage_id, 'currentStage')
+          this.savedStatus = response.status
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 
