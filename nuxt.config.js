@@ -21,7 +21,9 @@ export default {
       { name: 'twitter:image', content: 'https://raw.githubusercontent.com/iamAbayomi/kms/master/assets/images/github-logo.png' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap' }
     ]
   },
 
