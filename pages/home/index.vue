@@ -1,73 +1,80 @@
 <template>
-  <div class="main-section">
-    <!-- All user products -->
-    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
-    <div class="all-products">
-      <div
-        v-for="item in product_group"
-        :key="item.product_id"
-        class="single-product"
-      >
-        <div class="single-product-design">
-          <nuxt-link
-            class="text-link"
-            :to="'/productstage/' + item.product_id.toString()"
-          >
-            <div class="product-details">
-              <p>
-                {{ item.product_name }}
-              </p>
-              <p>
-                {{
-                  new Date(item.updatedAt)
-                    .toString('YYYY-MM-dd')
-                }}
-              </p>
-            </div>
-          </nuxt-link>
-          <div class="product-options">
-            <div class="text-center">
-              <v-menu offset-y>
-                <template #activator="{ on, attrs }">
-                  <v-btn icon>
-                    <v-icon
-                      dark
-                      class="menu-icon"
-                      v-bind="attrs"
-                      v-on="on"
+  <v-app>
+    <div class="main-section">
+      <!-- All user products -->
+      <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+      <div class="all-products">
+        <div
+          v-for="item in product_group"
+          :key="item.product_id"
+          class="single-product"
+        >
+          <div class="single-product-design">
+            <nuxt-link
+              class="text-link"
+              :to="'/productstage/' + item.product_id.toString()"
+            >
+              <div class="product-details">
+                <p>
+                  {{ item.product_name }}
+                </p>
+                <p>
+                  {{
+                    new Date(item.updatedAt)
+                      .toString('YYYY-MM-dd')
+                  }}
+                </p>
+              </div>
+            </nuxt-link>
+            <div class="product-options">
+              <div class="text-center">
+                <v-menu offset-y>
+                  <template #activator="{ on, attrs }">
+                    <v-btn icon>
+                      <v-icon
+                        dark
+                        class="menu-icon"
+                        v-bind="attrs"
+                        v-on="on"
+                      >
+                        fas fa-ellipsis-v
+                      </v-icon>
+                    </v-btn>
+                  </template>
+                  <v-list>
+                    <v-list-item
+                      v-for="(single, index) in optionsMenu"
+                      :key="index"
                     >
-                      fas fa-ellipsis-v
-                    </v-icon>
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item
-                    v-for="(single, index) in optionsMenu"
-                    :key="index"
-                  >
-                    <v-list-item-title>{{ single.option }}</v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-menu>
+                      <v-list-item-title
+                        @click="menuOptions(single.option, item.product_id)"
+                      >
+                        {{ single.option }}
+                      </v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
+              </div>
             </div>
           </div>
+          <div class="horizontal-line" />
         </div>
-        <div class="horizontal-line" />
-      </div>
 
-      <div />
-      <!-- End of user products declaration -->
-      <!-- Button to add new Notes -->
-      <div class="add-newbutton">
-        <img class="button-logo" src="~/assets/vectors/blue_plus.svg" @click="createProduct">
+        <div />
+        <!-- End of user products declaration -->
+        <!-- Button to add new Notes -->
+        <div class="add-newbutton">
+          <img class="button-logo" src="~/assets/vectors/blue_plus.svg" @click="createProduct">
+        </div>
+        <!-- End of button declaration -->
       </div>
-    <!-- End of button declaration -->
     </div>
-  </div>
+  </v-app>
 </template>
 
 <script>
 /* eslint-disable no-console */
+/* eslint-disable eqeqeq */
 export default {
   layout: 'pagewithtoolbar',
   middleware: 'auth',
@@ -133,6 +140,16 @@ export default {
         }).catch((err) => {
           console.log(err)
         })
+    },
+    renameSingleProduct () {
+
+    },
+    menuOptions (option, productId) {
+      if (option == 'Rename') {
+        this.renameSingleProduct(productId)
+      } else if (option == 'Delete') {
+        this.deleteSingleProduct(productId)
+      }
     }
   }
 }
@@ -163,6 +180,10 @@ export default {
 .v-btn > .v-btn__content .v-icon {
     color: #032E6E;
 
+}
+
+.v-menu{
+  display: inline;
 }
 
 .horizontal-line{
