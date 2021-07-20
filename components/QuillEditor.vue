@@ -6,7 +6,7 @@
       <button class="ql-bold" />
       <button class="ql-italic" />
       <button class="ql-underline" />
-      <button class="delete-button">
+      <button class="delete-button" @click="deleteStage">
         <img src="~/assets/vectors/delete.svg">
       </button>
     </div>
@@ -123,6 +123,16 @@ export default {
         })
         .catch((error) => {
           console.log(error)
+        })
+    },
+    deleteStage () {
+      this.$axios.delete('/apis/stage/' + this.stage_id)
+        .then((response) => {
+          this.getStageId()
+          console.log(response)
+          this.$router.go()
+        }).catch((err) => {
+          console.log(err)
         })
     },
 
