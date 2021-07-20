@@ -23,14 +23,14 @@
             </p>
           </div>
         </nuxt-link>
-        <div class="product-options hide">
+        <div class="product-options">
           <v-tooltip bottom>
             <template #activator="{ on, attrs }">
               <v-btn icon>
                 <v-icon
                   v-bind="attrs"
                   v-on="on"
-                  @click="deleteSingleProduct"
+                  @click="deleteSingleProduct(item.product_id)"
                 >
                   mdi-trash-can
                 </v-icon>
@@ -108,12 +108,11 @@ export default {
           console.log(err)
         })
     },
-    deleteSingleProduct () {
-      this.$axios.delete('/apis/product/' + this.product_group.product_id)
+    deleteSingleProduct (productId) {
+      this.$axios.delete('/apis/product/' + productId)
         .then((response) => {
-          this.getNotesId()
           console.log(response)
-          this.getText()
+          this.getAllProducts()
         }).catch((err) => {
           console.log(err)
         })
